@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace chess_proj
         {
             _client = new DiscordSocketClient();
             _client.Log += Log;
+            _client.LoggedIn += OnLogin;
+            _client.MessageReceived += OnMessageReceived;
             
             var token = File.ReadAllText(_projectPath + @"Private\token.txt");
 
@@ -33,10 +36,30 @@ namespace chess_proj
             //Console.WriteLine(token);
         }
 
+        
+
+        Task OnLogin()
+        {
+            DebugLog("completed task");
+            return Task.CompletedTask;
+        }
+        Task OnMessageReceived(SocketMessage socketMessage)
+        {
+            DebugLog(socketMessage.Content);
+            return Task.CompletedTask;
+        }
+        
+        #region debug
         Task Log(LogMessage msg)
         {
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
+        Task DebugLog(string message, string src="Debug")
+        {
+            Log(new LogMessage(LogSeverity.Debug, src, message));
+            return Task.CompletedTask;
+        }
+        #endregion
     }
 }
