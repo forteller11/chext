@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using chess_proj.Math;
 
-namespace chess_proj.Systems.Pieces
+namespace chess_proj.Mechanics.Pieces
 {
     public class Rook : Piece
     {

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using chess_proj.Math;
-using chess_proj.Systems.Pieces;
+using chess_proj.Mechanics.Pieces;
 using Discord;
 
 #nullable enable
-namespace chess_proj.Systems
+namespace chess_proj.Mechanics
 {
     public class Board
     {

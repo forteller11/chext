@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using chess_proj.Systems.Pieces;
+using chess_proj.Mechanics.Pieces;
 
-namespace chess_proj.Systems
+namespace chess_proj.Mechanics
 {
     public class Player
     {

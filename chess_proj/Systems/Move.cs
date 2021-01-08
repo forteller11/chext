@@ -1,4 +1,4 @@
-﻿namespace chess_proj.Systems
+﻿namespace chess_proj.Mechanics
 {
     public struct Moves
     {

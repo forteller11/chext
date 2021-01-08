@@ -3,7 +3,7 @@ using chess_proj.Math;
 
 #nullable enable
 
-namespace chess_proj.Systems.Pieces
+namespace chess_proj.Mechanics.Pieces
 {
     public abstract class Piece
     {
