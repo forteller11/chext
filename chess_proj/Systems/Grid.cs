@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using chess_proj.Math;
 using chess_proj.Mechanics.Pieces;
 using Discord;
@@ -30,14 +31,14 @@ namespace chess_proj.Mechanics
 
             if (piece == null)
             {
-                Program.DebugLog($"no piece at {from}");
+                Console.WriteLine($"no piece at {from}");
                 return;
             }
             
             //make sure piece is owned by actor
             if (piece.Owner != actor)
             {
-                Program.DebugLog($"{piece.Name} not owned by actor");
+                Console.WriteLine($"{piece.Name} not owned by actor");
                 return;
             }
 
@@ -46,7 +47,7 @@ namespace chess_proj.Mechanics
             piece.RefreshValidMoves(in ValidMoves);
             if (!ValidMoves.Contains(target))
             {
-                Program.DebugLog($"Cannot move {piece.Name} to {target}");
+                Console.WriteLine($"Cannot move {piece.Name} to {target}");
                 return;
             }
 

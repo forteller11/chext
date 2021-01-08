@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using chess_proj.Discord;
 using Discord.Rest;
@@ -14,7 +15,7 @@ namespace chess_proj.Mechanics
         private SocketTextChannel? _chessChannel;
         private Renderer _renderer;
         private Board _board;
-        private static string CHEX_CHANNEL_NAME = "__Chex Match__";
+        private static string CHEX_CHANNEL_NAME = "__chex__";
 
         public Game(DiscordSocketClient client)
         {
@@ -22,27 +23,31 @@ namespace chess_proj.Mechanics
             _board = new Board(20);
             
             _client = client;
-            _client.Connected += OnConnected;
+            _client.Ready += OnReady;
             _client.MessageReceived += OnMessageReceived;
+            //_client.ChannelCreated  += OnChannelCreated; //todo make sure no chex name
         }
-
-        private async Task OnConnected()
+        
+        private async Task OnReady()
         {
             //get __chess channel in all guilds.......
-    
+
+            Console.WriteLine(_client.Guilds.Count);
             foreach (var guild in _client.Guilds)
             {
                 #region find server named chex
                 bool hasChessChannel = false;
-                Program.DebugLog(guild.Name);
+                Console.WriteLine("guild");
+                Console.WriteLine(guild.Name);
                 foreach (var channel in guild.TextChannels)
                 {
-                    Program.DebugLog(channel.Name);
+                    Console.WriteLine("channel");
+                    Console.WriteLine($"{channel.Name} == {CHEX_CHANNEL_NAME}");
                     if (channel.Name == CHEX_CHANNEL_NAME)
                     {
                         hasChessChannel = true;
-                        _chessChannel = channel;
-                        Program.DebugLog("FOUND CHEX CHANNEL");
+                        Console.WriteLine("FOUND CHEX CHANNEL");
+                        break;
                     }
 
                 }
@@ -50,33 +55,35 @@ namespace chess_proj.Mechanics
                 #region create new if no chex server found
                 if (hasChessChannel == false) //IF not chex channel found in server, create it and then find it agfain
                 {
-                    Program.DebugLog("CREATED TEXT CHANNEL");
-                    var newChannel = await guild.CreateTextChannelAsync(CHEX_CHANNEL_NAME, properties =>
+                    //todo THIS NEVER RETURNS
+                    await guild.CreateTextChannelAsync(CHEX_CHANNEL_NAME, properties =>
                     {
                         properties.Topic = "CHEX";
                         properties.Position = 0;
                     });
+                    
+                    Console.WriteLine("CREATED TEXT CHANNEL");
                     
                     foreach (var channel in guild.TextChannels)
                     {
                         if (channel.Name == CHEX_CHANNEL_NAME)
                         {
                             _chessChannel = channel;
-                            Program.DebugLog("FOUND NEWLY CREATED CHEX CHANNEL");
+                            Console.WriteLine("FOUND NEWLY CREATED CHEX CHANNEL");
                         }
 
                     }
+                    
                 }
                 #endregion
                 
                 //INIT RENDERER
                 _renderer.Init(_chessChannel);
                 _renderer.Redraw();
-     
+                
             }
 
-
-           
+            
         }
 
         private Task OnMessageReceived(SocketMessage arg)

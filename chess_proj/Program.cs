@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
-using System.Net;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
@@ -33,14 +31,14 @@ namespace chess_proj
         
         
         #region debug
-        public static Task Log(LogMessage msg)
+        public Task Log(LogMessage msg)
         {
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
-        public static Task DebugLog(string message, string src="Debug")
+        public Task DebugLog(object message, string src="Debug")
         {
-            Log(new LogMessage(LogSeverity.Debug, src, message));
+            Log(new LogMessage(LogSeverity.Debug, src, message.ToString()));
             return Task.CompletedTask;
         }
         #endregion
