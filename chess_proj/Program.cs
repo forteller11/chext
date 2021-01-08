@@ -58,6 +58,11 @@ namespace chess_proj
             msg.SendMessageAsync(null, false, embed.Build());
             return Task.CompletedTask;
         }
+
+        void InitRender()
+        {
+            
+        }
         
         #region debug
         public static Task Log(LogMessage msg)
