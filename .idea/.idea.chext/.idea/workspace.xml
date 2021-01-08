@@ -19,14 +19,15 @@
       <list>
         <option value="$PROJECT_DIR$/chess_proj/Private/key.txt" />
         <option value="$PROJECT_DIR$/chess_proj/Private/token.txt" />
-        <option value="$PROJECT_DIR$/chess_proj/Program.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Move.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Systems/Player.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Piece.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Player.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Rook.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Program.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Grid.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
       </list>
     </option>
   </component>
@@ -68,7 +69,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="11226000" />
+      <workItem from="1610067480524" duration="12783000" />
     </task>
     <servers />
   </component>
