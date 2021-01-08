@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Ara3D.Math3D" Version="1.0.0" />
       <PackageReference Include="Discord.Net" Version="2.2.0" />
       <PackageReference Include="Discord.Net.Core" Version="2.2.0" />
       <PackageReference Include="Discord.Net.WebSocket" Version="2.2.0" />

@@ -26,6 +26,7 @@ namespace chess_proj
             _client.Log += Log;
             _client.LoggedIn += OnLogin;
             _client.MessageReceived += OnMessageReceived;
+            _client.
             
             var token = File.ReadAllText(_projectPath + @"Private\token.txt");
 

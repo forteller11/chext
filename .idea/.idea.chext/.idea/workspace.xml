@@ -11,6 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5866DD7D-31EC-4E2C-BF18-A441550B2443/09/15b480d9/Int2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/16/feeee6b1/LogMessage.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -19,6 +20,13 @@
         <option value="$PROJECT_DIR$/chess_proj/Private/key.txt" />
         <option value="$PROJECT_DIR$/chess_proj/Private/token.txt" />
         <option value="$PROJECT_DIR$/chess_proj/Program.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Move.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Player.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Piece.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Rook.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Grid.cs" />
       </list>
     </option>
   </component>
@@ -60,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="6181000" />
+      <workItem from="1610067480524" duration="11226000" />
     </task>
     <servers />
   </component>
@@ -73,21 +81,21 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="2455" height="413" key="GridCell.Tab.0.bottom" timestamp="1610076112172">
+    <state width="2455" height="413" key="GridCell.Tab.0.bottom" timestamp="1610083490842">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.bottom/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610076112172" />
-    <state width="2455" height="413" key="GridCell.Tab.0.center" timestamp="1610076112172">
+    <state width="2455" height="413" key="GridCell.Tab.0.bottom/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610083490842" />
+    <state width="2455" height="413" key="GridCell.Tab.0.center" timestamp="1610083490841">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.center/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610076112172" />
-    <state width="2455" height="413" key="GridCell.Tab.0.left" timestamp="1610076112172">
+    <state width="2455" height="413" key="GridCell.Tab.0.center/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610083490841" />
+    <state width="2455" height="413" key="GridCell.Tab.0.left" timestamp="1610083490841">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.left/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610076112172" />
-    <state width="2455" height="413" key="GridCell.Tab.0.right" timestamp="1610076112172">
+    <state width="2455" height="413" key="GridCell.Tab.0.left/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610083490841" />
+    <state width="2455" height="413" key="GridCell.Tab.0.right" timestamp="1610083490842">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610076112172" />
+    <state width="2455" height="413" key="GridCell.Tab.0.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610083490842" />
   </component>
 </project>
