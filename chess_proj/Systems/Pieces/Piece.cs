@@ -7,14 +7,13 @@ namespace chess_proj.Systems.Pieces
 {
     public abstract class Piece
     {
-        public Int2 Position { get; protected set; }
         public readonly Player Owner;
+        public readonly string Name; //wasting mem
 
-        public Piece(Int2 position, Player owner)
+        public Piece(Player owner)
         {
-            Position = position;
             Owner = owner;
         }
-        public abstract void GetMoves(in List<Int2> moves);
+        public abstract void RefreshValidMoves(in List<Int2> moves);
     }
 }

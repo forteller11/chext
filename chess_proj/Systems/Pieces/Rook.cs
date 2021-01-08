@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
-using Ara3D;
+using chess_proj.Math;
 
 namespace chess_proj.Systems.Pieces
 {
     public class Rook : Piece
     {
-        public 
-        public override void GetMoves(in List<Int2> moves)
+        public Rook(Player owner) : base(owner)
+        {
+        }
+
+        public override void RefreshValidMoves(in List<Int2> moves)
         {
             throw new System.NotImplementedException();
         }

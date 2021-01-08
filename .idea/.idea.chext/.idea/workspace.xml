@@ -11,6 +11,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/ad/1fb52086/RequestOptions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82DFF53F-4E25-412E-AF0F-8A0CAD262CED/61/f0e6bc8f/DiscordSocketClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5866DD7D-31EC-4E2C-BF18-A441550B2443/09/15b480d9/Int2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/16/feeee6b1/LogMessage.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -25,9 +27,9 @@
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Rook.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Program.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Grid.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Program.cs" />
       </list>
     </option>
   </component>
@@ -69,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="12783000" />
+      <workItem from="1610067480524" duration="14192000" />
     </task>
     <servers />
   </component>

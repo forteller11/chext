@@ -10,5 +10,8 @@
             X = x;
             Y = y;
         }
+
+        public override string ToString() => $"Int2 X: {X}, Y: {Y};";
+        
     }
 }

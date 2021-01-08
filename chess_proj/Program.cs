@@ -26,8 +26,7 @@ namespace chess_proj
             _client.Log += Log;
             _client.LoggedIn += OnLogin;
             _client.MessageReceived += OnMessageReceived;
-            _client.
-            
+
             var token = File.ReadAllText(_projectPath + @"Private\token.txt");
 
             await _client.LoginAsync(TokenType.Bot, token);
@@ -47,16 +46,26 @@ namespace chess_proj
         Task OnMessageReceived(SocketMessage socketMessage)
         {
             DebugLog(socketMessage.Content);
+
+            var embed = new EmbedBuilder();
+            embed.Color = Color.DarkBlue;
+
+            embed.Title = "Chex";
+            embed.AddField("cells", "` x o x o x o" +
+                                    "\nx o x o x o x o`");
+
+            var msg = socketMessage.Channel as IMessageChannel;
+            msg.SendMessageAsync(null, false, embed.Build());
             return Task.CompletedTask;
         }
         
         #region debug
-        Task Log(LogMessage msg)
+        public static Task Log(LogMessage msg)
         {
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
-        Task DebugLog(string message, string src="Debug")
+        public static Task DebugLog(string message, string src="Debug")
         {
             Log(new LogMessage(LogSeverity.Debug, src, message));
             return Task.CompletedTask;
