@@ -46,6 +46,7 @@ namespace chess_proj.Mechanics
                     if (channel.Name == CHEX_CHANNEL_NAME)
                     {
                         hasChessChannel = true;
+                        _chessChannel = channel;
                         Console.WriteLine("FOUND CHEX CHANNEL");
                         break;
                     }
@@ -55,7 +56,8 @@ namespace chess_proj.Mechanics
                 #region create new if no chex server found
                 if (hasChessChannel == false) //IF not chex channel found in server, create it and then find it agfain
                 {
-                    //todo THIS NEVER RETURNS
+                    //todo CREATE NEW CHANNEL WHEN THIS RETURNS
+                    //LIKE AWAIT WITHOUT MAKING METHOD ASYNC
                     await guild.CreateTextChannelAsync(CHEX_CHANNEL_NAME, properties =>
                     {
                         properties.Topic = "CHEX";
@@ -70,6 +72,7 @@ namespace chess_proj.Mechanics
                         {
                             _chessChannel = channel;
                             Console.WriteLine("FOUND NEWLY CREATED CHEX CHANNEL");
+                            break;
                         }
 
                     }
@@ -77,13 +80,11 @@ namespace chess_proj.Mechanics
                 }
                 #endregion
                 
-                //INIT RENDERER
-                _renderer.Init(_chessChannel);
-                _renderer.Redraw();
+                _renderer.Init(_chessChannel, _board);
+                await _renderer.Redraw();
                 
             }
 
-            
         }
 
         private Task OnMessageReceived(SocketMessage arg)
