@@ -49,14 +49,22 @@ namespace chess_proj.Discord
             _stringBuilder.Clear();
             _stringBuilder.Append("```"); //code block start
 
+            
+            LetterRow();
+            _stringBuilder.Append("\n");
+            
             _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
             _stringBuilder.Append(new string('-', _board.Dimensions*CELL_WIDTH+1));
             _stringBuilder.Append("\n");
             
+            
             for (int i = 0; i < _board.Dimensions; i++)
             {
                 #region piece row
-                _stringBuilder.Append("  " + (i+1).ToString().PadRight(BOARD_BORDER_WIDTH-2, ' '));
+                
+                int rowLabel = _board.Dimensions - i;
+                _stringBuilder.Append("  " + (rowLabel).ToString().PadRight(BOARD_BORDER_WIDTH-2, ' '));
+                
                 for (int j = 0; j < _board.Dimensions; j++)
                 {
                     if (_board.GetCell(new Int2(i, j)) == null)
@@ -64,38 +72,35 @@ namespace chess_proj.Discord
                     else
                         _stringBuilder.Append("|" + _board.Cells[i][j]!.Name);
                 }
-                _stringBuilder.Append("|   ");  
+                _stringBuilder.Append("|");
+                _stringBuilder.Append((rowLabel).ToString().PadLeft(BOARD_BORDER_WIDTH-2, ' ') + " ");
                 #endregion
 
+                #region spacer row
                 _stringBuilder.Append(" \n");
                 if (i != _board.Dimensions - 1)
                 {
-                    #region spacer row
-                    
                     _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
-
+                    
                     for (int j = 0; j < _board.Dimensions; j++)
                         _stringBuilder.Append("|---");
-
+                    
                     _stringBuilder.Append("|");
                     _stringBuilder.Append(" \n");
-                    #endregion
+                   
                 }
-                else
+                else //bottom row
                 {
                     _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
                     _stringBuilder.Append(new string('-', _board.Dimensions*CELL_WIDTH+1));
                 }
+                #endregion
             }
 
-            #region bottom label
-
+           
             _stringBuilder.Append("\n");
-            _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
-            for (int i = 0; i < _board.Dimensions; i++)
-                _stringBuilder.Append("  " + (i + 1) + " ");
-            #endregion
-            
+            LetterRow();
+
             _stringBuilder.Append("```"); //code block end
             
             
@@ -124,6 +129,31 @@ namespace chess_proj.Discord
                 
                 builder.Append("|");
                 builder.Append(" \n");
+            }
+
+            void LetterRow()
+            {
+                _stringBuilder.Append(' ', BOARD_BORDER_WIDTH);
+                for (int i = 0; i < _board.Dimensions; i++)
+                {
+                    _stringBuilder.Append($"  {IndexToLetter(i)} ");
+                }
+            }
+
+            string IndexToLetter(int i)
+            {
+                switch (i)
+                {
+                    case 0: return "a";
+                    case 1: return "b";
+                    case 2: return "c";
+                    case 3: return "d";
+                    case 4: return "e";
+                    case 5: return "f";
+                    case 6: return "g";
+                    case 7: return "h";
+                    default: throw new ArgumentException($"index was {i} but must be between 0-7!");
+                }
             }
         }
         
