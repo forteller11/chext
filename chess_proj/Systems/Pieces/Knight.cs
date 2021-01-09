@@ -7,7 +7,7 @@ namespace chess_proj.Mechanics.Pieces
     {
         public Knight(Player owner) : base(owner, 'n') { }
 
-        public override void RefreshValidMoves(Piece[][] cells, List<Move> moves)
+        public override void RefreshValidMoves(Int2 piecePosition, Piece[][] cells, List<Move> moves)
         {
             throw new System.NotImplementedException();
         }

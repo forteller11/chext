@@ -34,6 +34,7 @@
             <e p="Castle.cs" t="Include" />
             <e p="King.cs" t="Include" />
             <e p="Knight.cs" t="Include" />
+            <e p="MoveHelpers.cs" t="Include" />
             <e p="Pawn.cs" t="Include" />
             <e p="Piece.cs" t="Include" />
             <e p="Queen.cs" t="Include" />

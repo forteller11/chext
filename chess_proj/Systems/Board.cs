@@ -45,7 +45,7 @@ namespace chess_proj.Mechanics
 
             //is target in list of valid moves
             ValidMoves.Clear();
-            piece.RefreshValidMoves(Cells, ValidMoves);
+            piece.RefreshValidMoves(from, Cells, ValidMoves);
             bool validMovesContainsTarget = false;
             for (int i = 0; i < ValidMoves.Count; i++)
             {
