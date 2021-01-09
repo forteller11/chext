@@ -30,8 +30,13 @@
           <e p="Grid.cs" t="Include" />
           <e p="Move.cs" t="Include" />
           <e p="Pieces" t="Include">
+            <e p="Bishop.cs" t="Include" />
+            <e p="Castle.cs" t="Include" />
+            <e p="Horse.cs" t="Include" />
+            <e p="King.cs" t="Include" />
+            <e p="Pawn.cs" t="Include" />
             <e p="Piece.cs" t="Include" />
-            <e p="Rook.cs" t="Include" />
+            <e p="Queen.cs" t="Include" />
           </e>
           <e p="Player.cs" t="Include" />
         </e>

@@ -3,12 +3,9 @@ using chess_proj.Math;
 
 namespace chess_proj.Mechanics.Pieces
 {
-    public class Rook : Piece
+    public class King : Piece
     {
-        
-        public Rook(Player owner) : base(owner, 'r')
-        {
-        }
+        public King(Player owner) : base(owner, 'k') { }
 
         public override void RefreshValidMoves(in List<Int2> moves)
         {

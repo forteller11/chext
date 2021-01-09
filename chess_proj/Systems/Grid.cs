@@ -11,13 +11,10 @@ namespace chess_proj.Mechanics
         public readonly int Dimensions;
         public readonly Piece?[][] Cells;
         private readonly List<Int2> ValidMoves;
-        public Player White;
-        public Player Black;
+        
         
         public Board(int cellCount)
         {
-            White = new Player(true);
-            Black = new Player(false);
 
             Dimensions = cellCount;
             Cells = new Piece[Dimensions][];
@@ -69,5 +66,7 @@ namespace chess_proj.Mechanics
         }
 
         public Piece? GetCell(Int2 position) => Cells[position.X][position.Y];
+        public void SetCell(Int2 position, Piece piece) => Cells[position.X][position.Y] = piece;
+        public void SetCell(int x, int y, Piece piece) => Cells[x][y] = piece;
     }
 }

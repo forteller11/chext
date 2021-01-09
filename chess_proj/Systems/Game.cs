@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using chess_proj.Discord;
+using chess_proj.Math;
+using chess_proj.Mechanics.Pieces;
 using Discord.Rest;
 using Discord.WebSocket;
 
@@ -15,11 +17,14 @@ namespace chess_proj.Mechanics
         private SocketTextChannel? _chessChannel;
         private Renderer _renderer;
         private Board _board;
+        public Player White;
+        public Player Black;
         private static string CHEX_CHANNEL_NAME = "__chex__";
 
         public Game(DiscordSocketClient client)
         {
-            
+            White = new Player(true);
+            Black = new Player(false);
             
             _client = client;
             _client.Ready += OnReady;
@@ -81,6 +86,8 @@ namespace chess_proj.Mechanics
                 #endregion
                 
                 _board = new Board(8);
+                SetupStandard(_board);
+                
                 _renderer = new Renderer(_chessChannel!, _board);
                 await _renderer.Redraw();
                 
@@ -90,7 +97,31 @@ namespace chess_proj.Mechanics
 
         void SetupStandard(Board board)
         {
-           // board.GetCell()
+            SetupPawnRow(1, White);
+            SetupPawnRow(6, Black);
+            SetupRowNonPawns(0, White);
+            SetupRowNonPawns(7, Black);
+            
+            
+            void SetupPawnRow(int rowIndex, Player player)
+            {
+                for (int i = 0; i < board.Dimensions; i++)
+                    board.SetCell(rowIndex, i, new Pawn(player));
+            }
+            void SetupRowNonPawns(int rowIndex, Player player)
+            {
+                board.SetCell(rowIndex, 0, new Castle(player));
+                board.SetCell(rowIndex, 7, new Castle(player));
+                board.SetCell(rowIndex, 1, new Horse(player));
+                board.SetCell(rowIndex, 6, new Horse(player));
+                board.SetCell(rowIndex, 2, new Bishop(player));
+                board.SetCell(rowIndex, 5, new Bishop(player));
+                int queenIndex = player.IsWhite ? 4 : 3;
+                int kingIndex  = player.IsWhite ? 3 : 4;
+                board.SetCell(rowIndex, queenIndex, new King(player));
+                board.SetCell(rowIndex, kingIndex, new Queen(player));
+    
+            }
         }
 
         private Task OnMessageReceived(SocketMessage arg)
