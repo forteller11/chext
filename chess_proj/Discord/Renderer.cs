@@ -18,7 +18,7 @@ namespace chess_proj.Discord
         public RestUserMessage? EmbedMessage;
         public Board _board;
         private StringBuilder _stringBuilder;
-        const int BOARD_BORDER_WIDTH = 5; //IN SPACES
+        const int BOARD_BORDER_WIDTH = 3; //IN SPACES
         const int CELL_WIDTH = 4; //IN SPACES
 
         public Renderer(ISocketMessageChannel channel, Board board)
@@ -49,11 +49,6 @@ namespace chess_proj.Discord
             _stringBuilder.Clear();
             _stringBuilder.Append("```"); //code block start
 
-            for (int i = 0; i < _board.Dimensions; i++)
-            {
-                
-            }
-
             _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
             _stringBuilder.Append(new string('-', _board.Dimensions*CELL_WIDTH+1));
             _stringBuilder.Append("\n");
@@ -61,7 +56,7 @@ namespace chess_proj.Discord
             for (int i = 0; i < _board.Dimensions; i++)
             {
                 #region piece row
-                _stringBuilder.Append((i+1 + ":").PadRight(BOARD_BORDER_WIDTH, ' '));
+                _stringBuilder.Append((i+1).ToString().PadRight(BOARD_BORDER_WIDTH, ' '));
                 for (int j = 0; j < _board.Dimensions; j++)
                 {
                     if (_board.GetCell(new Int2(i, j)) == null)
@@ -92,14 +87,21 @@ namespace chess_proj.Discord
                     _stringBuilder.Append(new string('-', _board.Dimensions*CELL_WIDTH+1));
                 }
             }
-            
+
+            #region bottom label
+
+            _stringBuilder.Append("\n");
+            _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
+            for (int i = 0; i < _board.Dimensions; i++)
+                _stringBuilder.Append("  " + (i + 1) + " ");
+            #endregion
             
             _stringBuilder.Append("```"); //code block end
             
             
             
             _embedBuilder.Fields.Clear();
-            _embedBuilder.AddField("Turn", _stringBuilder.ToString());
+            _embedBuilder.AddField("Turn", _stringBuilder.ToString(), false);
 
             _embedBuilder.Description = _stringBuilder.ToString();
             _embedBuilder.Description = _stringBuilder.ToString();

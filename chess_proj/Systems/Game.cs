@@ -88,6 +88,11 @@ namespace chess_proj.Mechanics
 
         }
 
+        void SetupStandard(Board board)
+        {
+           // board.GetCell()
+        }
+
         private Task OnMessageReceived(SocketMessage arg)
         {
             return Task.CompletedTask;

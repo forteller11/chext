@@ -31,11 +31,11 @@
         <option value="$PROJECT_DIR$/chess_proj/Systems/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Program.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Systems/Game.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Rook.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Player.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Grid.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Game.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
       </list>
     </option>
@@ -80,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="36060000" />
+      <workItem from="1610067480524" duration="37185000" />
     </task>
     <servers />
   </component>
@@ -97,22 +97,22 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state width="789" height="464" key="DebuggerActiveHint/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610153821503" />
-    <state width="2455" height="413" key="GridCell.Tab.0.bottom" timestamp="1610174594243">
+    <state width="2455" height="413" key="GridCell.Tab.0.bottom" timestamp="1610177113144">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.bottom/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610174594243" />
-    <state width="2455" height="413" key="GridCell.Tab.0.center" timestamp="1610174594243">
+    <state width="2455" height="413" key="GridCell.Tab.0.bottom/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610177113144" />
+    <state width="2455" height="413" key="GridCell.Tab.0.center" timestamp="1610177113144">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.center/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610174594243" />
-    <state width="2455" height="413" key="GridCell.Tab.0.left" timestamp="1610174594243">
+    <state width="2455" height="413" key="GridCell.Tab.0.center/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610177113144" />
+    <state width="2455" height="413" key="GridCell.Tab.0.left" timestamp="1610177113144">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.left/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610174594243" />
-    <state width="2455" height="413" key="GridCell.Tab.0.right" timestamp="1610174594243">
+    <state width="2455" height="413" key="GridCell.Tab.0.left/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610177113144" />
+    <state width="2455" height="413" key="GridCell.Tab.0.right" timestamp="1610177113144">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610174594243" />
+    <state width="2455" height="413" key="GridCell.Tab.0.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610177113144" />
     <state width="2455" height="535" key="GridCell.Tab.1.bottom" timestamp="1610157164487">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
@@ -181,19 +181,23 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state x="1126" y="436" key="RiderGenerateDialog/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610130407947" />
+    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup" timestamp="1610177156622">
+      <screen x="62" y="0" width="2498" height="1440" />
+    </state>
+    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610177156622" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/chess_proj/Discord/Renderer.cs</url>
-          <line>64</line>
+          <line>59</line>
           <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Discord\Renderer.cs" initialLine="49">
             <startOffsets>
-              <option value="2063" />
+              <option value="1966" />
             </startOffsets>
             <endOffsets>
-              <option value="2106" />
+              <option value="2009" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />

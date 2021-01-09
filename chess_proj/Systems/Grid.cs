@@ -22,19 +22,12 @@ namespace chess_proj.Mechanics
             Dimensions = cellCount;
             Cells = new Piece[Dimensions][];
             for (int i = 0; i < Cells.Length; i++)
-            {
                 Cells[i] = new Piece[Dimensions];
-                for (int j = 0; j < Cells.Length; j++)
-                {
-                    if (j > Dimensions / 2)
-                    {
-                        Cells[i][j] = new Rook(White);
-                    }
-                }
-            }
+            
 
 
         }
+        
 
         public void MovePiece(Player actor, Int2 from, Int2 target)
         {
