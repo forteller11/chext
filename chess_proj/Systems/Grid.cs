@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using chess_proj.Math;
 using chess_proj.Mechanics.Pieces;
-using Discord;
 
 #nullable enable
 namespace chess_proj.Mechanics
@@ -12,13 +11,13 @@ namespace chess_proj.Mechanics
         public readonly int Dimensions;
         public readonly Piece?[][] Cells;
         private readonly List<Int2> ValidMoves;
-        public Player White = new Player();
-        public Player Black = new Player();
+        public Player White;
+        public Player Black;
         
         public Board(int cellCount)
         {
-            White = new Player();
-            Black = new Player();
+            White = new Player(true);
+            Black = new Player(false);
 
             Dimensions = cellCount;
             Cells = new Piece[Dimensions][];

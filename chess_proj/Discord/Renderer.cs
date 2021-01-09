@@ -18,6 +18,8 @@ namespace chess_proj.Discord
         public RestUserMessage? EmbedMessage;
         public Board _board;
         private StringBuilder _stringBuilder;
+        const int BOARD_BORDER_WIDTH = 5; //IN SPACES
+        const int CELL_WIDTH = 4; //IN SPACES
 
         public Renderer(ISocketMessageChannel channel, Board board)
         {
@@ -45,24 +47,54 @@ namespace chess_proj.Discord
             }
 
             _stringBuilder.Clear();
-            //code block
-            Console.WriteLine("redraw 2");
+            _stringBuilder.Append("```"); //code block start
+
             for (int i = 0; i < _board.Dimensions; i++)
             {
+                
+            }
+
+            _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
+            _stringBuilder.Append(new string('-', _board.Dimensions*CELL_WIDTH+1));
+            _stringBuilder.Append("\n");
+            
+            for (int i = 0; i < _board.Dimensions; i++)
+            {
+                #region piece row
+                _stringBuilder.Append((i+1 + ":").PadRight(BOARD_BORDER_WIDTH, ' '));
                 for (int j = 0; j < _board.Dimensions; j++)
                 {
                     if (_board.GetCell(new Int2(i, j)) == null)
-                    {
-                        _stringBuilder.Append(" .");
-                    }
+                        _stringBuilder.Append("|   ");
                     else
-                    {
-                        _stringBuilder.Append(" " + _board.Cells[i][j]!.EmoteName + " ");
-                    }
+                        _stringBuilder.Append("|" + _board.Cells[i][j]!.Name);
                 }
+                _stringBuilder.Append("|   ");  
+                #endregion
 
                 _stringBuilder.Append(" \n");
+                if (i != _board.Dimensions - 1)
+                {
+                    #region spacer row
+                    
+                    _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
+
+                    for (int j = 0; j < _board.Dimensions; j++)
+                        _stringBuilder.Append("|---");
+
+                    _stringBuilder.Append("|");
+                    _stringBuilder.Append(" \n");
+                    #endregion
+                }
+                else
+                {
+                    _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
+                    _stringBuilder.Append(new string('-', _board.Dimensions*CELL_WIDTH+1));
+                }
             }
+            
+            
+            _stringBuilder.Append("```"); //code block end
             
             
             
@@ -79,6 +111,18 @@ namespace chess_proj.Discord
             }, null);
             
             Console.WriteLine("after modify async");
+
+            void SpaceRow(StringBuilder builder)
+            {
+                builder.Append(" \n");
+                builder.Append(new string(' ', BOARD_BORDER_WIDTH));
+                
+                for (int j = 0; j < _board.Dimensions; j++)
+                    builder.Append("|---");
+                
+                builder.Append("|");
+                builder.Append(" \n");
+            }
         }
         
  

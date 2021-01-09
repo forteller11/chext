@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using chess_proj.Math;
 
 #nullable enable
@@ -8,14 +9,15 @@ namespace chess_proj.Mechanics.Pieces
     public abstract class Piece
     {
         public readonly Player Owner;
-        public readonly string Name; //wasting mem
+        public string Name => Owner.IsWhite ? $"<{Type}>" : $"[{Type}]";  //wasting mem
+        public readonly string Type; //wasting mem
         //public string EmoteName => "\\:__" + Name + "__:";
         public string EmoteName => "<:__rook__:797330289474142239>";
 
-        public Piece(Player owner, string name)
+        public Piece(Player owner, char type)
         {
             Owner = owner;
-            Name = name;
+            Type = type.ToString();
         }
         public abstract void RefreshValidMoves(in List<Int2> moves);
     }

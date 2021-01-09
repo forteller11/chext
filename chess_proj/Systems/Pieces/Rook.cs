@@ -6,7 +6,7 @@ namespace chess_proj.Mechanics.Pieces
     public class Rook : Piece
     {
         
-        public Rook(Player owner) : base(owner, "rook")
+        public Rook(Player owner) : base(owner, 'r')
         {
         }
 
