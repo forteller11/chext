@@ -8,31 +8,35 @@ using Discord;
 using Discord.Rest;
 using Discord.WebSocket;
 
+#nullable enable
 namespace chess_proj.Discord
 {
     public class Renderer
     {
-        public EmbedBuilder _embedBuilder;
+        private EmbedBuilder _embedBuilder;
         public ISocketMessageChannel Channel;
-        public RestUserMessage EmbedMessage;
+        public RestUserMessage? EmbedMessage;
         public Board _board;
         private StringBuilder _stringBuilder;
 
-        public void Init(ISocketMessageChannel channel, Board board)
+        public Renderer(ISocketMessageChannel channel, Board board)
         {
             Console.WriteLine("init");
             Channel = channel;
+            Console.WriteLine("init2");
             _board = board;
+            Console.WriteLine("init3");
             
-            _stringBuilder = new StringBuilder(_board.Dimensions * _board.Dimensions * 2);
-            _stringBuilder.Append('o', _stringBuilder.MaxCapacity);
-
+            _stringBuilder = new StringBuilder(_board.Dimensions * _board.Dimensions * 6);
+            _stringBuilder.Append('o', _stringBuilder.Capacity);
+            
+            Console.WriteLine("init4");
             _embedBuilder = new EmbedBuilder();
             _embedBuilder.Color = Color.DarkBlue;
             _embedBuilder.Title = "Chex";
             Console.WriteLine("end init");
-
         }
+
         
         public async Task Redraw()
         {
@@ -55,15 +59,15 @@ namespace chess_proj.Discord
                 {
                     if (_board.GetCell(new Int2(i, j)) == null)
                     {
-                        _stringBuilder.Append('.');
+                        _stringBuilder.Append(" .");
                     }
                     else
                     {
-                        _stringBuilder.Append('0');
+                        _stringBuilder.Append(" X");
                     }
                 }
 
-                _stringBuilder.Append('\n');
+                _stringBuilder.Append(" \n");
             }
             
             _stringBuilder.Append("```"); //code block end

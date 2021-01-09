@@ -19,8 +19,7 @@ namespace chess_proj.Mechanics
 
         public Game(DiscordSocketClient client)
         {
-            _renderer = new Renderer();
-            _board = new Board(20);
+            
             
             _client = client;
             _client.Ready += OnReady;
@@ -30,11 +29,10 @@ namespace chess_proj.Mechanics
         
         private async Task OnReady()
         {
-            //get __chess channel in all guilds.......
-
             Console.WriteLine(_client.Guilds.Count);
             foreach (var guild in _client.Guilds)
             {
+                #region find or create _chessChannel in guilds
                 #region find server named chex
                 bool hasChessChannel = false;
                 Console.WriteLine("guild");
@@ -80,7 +78,10 @@ namespace chess_proj.Mechanics
                 }
                 #endregion
                 
-                _renderer.Init(_chessChannel, _board);
+                #endregion
+                
+                _board = new Board(8);
+                _renderer = new Renderer(_chessChannel!, _board);
                 await _renderer.Redraw();
                 
             }
