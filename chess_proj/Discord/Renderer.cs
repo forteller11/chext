@@ -17,15 +17,27 @@ namespace chess_proj.Discord
         public ISocketMessageChannel Channel;
         public RestUserMessage? EmbedMessage;
         public Board _board;
+        public char[][] Effects; //over top chess board for visual effects
+        //todo seperate visual from systems
+        
         private StringBuilder _stringBuilder;
         const int BOARD_BORDER_WIDTH = 4; //IN SPACES
         const int CELL_WIDTH = 4; //IN SPACES
+        
 
         public Renderer(ISocketMessageChannel channel, Board board)
         {
             Channel = channel;
             _board = board;
 
+            Effects = new char[_board.Dimensions][];
+            for (int i = 0; i < _board.Dimensions; i++)
+            {
+                Effects[i] = new char[_board.Dimensions];
+                for (int j = 0; j < _board.Dimensions; j++)
+                    Effects[i][j] = '\0';
+                
+            }
             _stringBuilder = new StringBuilder(_board.Dimensions * _board.Dimensions * 6);
             _stringBuilder.Append('-', _stringBuilder.Capacity);
             
@@ -67,7 +79,11 @@ namespace chess_proj.Discord
                 
                 for (int j = 0; j < _board.Dimensions; j++)
                 {
-                    if (_board.GetCell(new Int2(i, j)) == null)
+                    if (Effects[i][j] != '\0')
+                    {
+                        _stringBuilder.Append($"| {Effects[i][j]} ");
+                    }
+                    else if (_board.GetCell(i, j) == null)
                         _stringBuilder.Append("|   ");
                     else
                         _stringBuilder.Append("|" + _board.Cells[i][j]!.Name);

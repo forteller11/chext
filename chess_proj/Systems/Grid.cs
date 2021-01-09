@@ -66,6 +66,7 @@ namespace chess_proj.Mechanics
         }
 
         public Piece? GetCell(Int2 position) => Cells[position.X][position.Y];
+        public Piece? GetCell(int x, int y) => Cells[x][y];
         public void SetCell(Int2 position, Piece piece) => Cells[position.X][position.Y] = piece;
         public void SetCell(int x, int y, Piece piece) => Cells[x][y] = piece;
     }

@@ -32,8 +32,8 @@
           <e p="Pieces" t="Include">
             <e p="Bishop.cs" t="Include" />
             <e p="Castle.cs" t="Include" />
-            <e p="Horse.cs" t="Include" />
             <e p="King.cs" t="Include" />
+            <e p="Knight.cs" t="Include" />
             <e p="Pawn.cs" t="Include" />
             <e p="Piece.cs" t="Include" />
             <e p="Queen.cs" t="Include" />

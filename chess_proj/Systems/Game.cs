@@ -112,8 +112,8 @@ namespace chess_proj.Mechanics
             {
                 board.SetCell(rowIndex, 0, new Castle(player));
                 board.SetCell(rowIndex, 7, new Castle(player));
-                board.SetCell(rowIndex, 1, new Horse(player));
-                board.SetCell(rowIndex, 6, new Horse(player));
+                board.SetCell(rowIndex, 1, new Knight(player));
+                board.SetCell(rowIndex, 6, new Knight(player));
                 board.SetCell(rowIndex, 2, new Bishop(player));
                 board.SetCell(rowIndex, 5, new Bishop(player));
                 int queenIndex = player.IsWhite ? 4 : 3;
