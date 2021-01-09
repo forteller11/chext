@@ -1,4 +1,5 @@
-﻿namespace chess_proj.Math
+﻿
+ namespace chess_proj.Math
 {
     public struct Int2
     {
@@ -11,6 +12,8 @@
             Y = y;
         }
 
+        public static bool operator ==(Int2 a, Int2 b) => a.X == b.X && a.Y == b.Y;
+        public static bool operator !=(Int2 a, Int2 b) => a.X != b.X || a.Y != b.Y;
         public override string ToString() => $"Int2 X: {X}, Y: {Y};";
         
     }

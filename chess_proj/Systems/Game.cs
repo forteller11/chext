@@ -126,6 +126,13 @@ namespace chess_proj.Mechanics
 
         private Task OnMessageReceived(SocketMessage arg)
         {
+            Console.WriteLine("msg received");
+            if (arg.Author.Id == _client.CurrentUser.Id)
+            {
+                Console.WriteLine("chex sent/received msg"); return Task.CompletedTask;
+            }
+
+            _renderer.Redraw();
             return Task.CompletedTask;
         }
     }

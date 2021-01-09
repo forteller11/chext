@@ -39,7 +39,7 @@ namespace chess_proj.Discord
                 
             }
             _stringBuilder = new StringBuilder(_board.Dimensions * _board.Dimensions * 6);
-            _stringBuilder.Append('-', _stringBuilder.Capacity);
+            _stringBuilder.Append('#', _stringBuilder.Capacity);
             
             _embedBuilder = new EmbedBuilder();
             _embedBuilder.Color = Color.Gold;
@@ -122,10 +122,9 @@ namespace chess_proj.Discord
             
             
             _embedBuilder.Fields.Clear();
-            _embedBuilder.AddField("Turn", _stringBuilder.ToString(), false);
-
+            //_embedBuilder.AddField("Chex", _stringBuilder.ToString(), true);
             _embedBuilder.Description = _stringBuilder.ToString();
-            _embedBuilder.Description = _stringBuilder.ToString();
+            
             
             Console.WriteLine("before modify async");
             EmbedMessage.ModifyAsync(properties =>

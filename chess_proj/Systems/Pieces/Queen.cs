@@ -7,7 +7,7 @@ namespace chess_proj.Mechanics.Pieces
     {
         public Queen(Player owner) : base(owner, 'q') { }
 
-        public override void RefreshValidMoves(in List<Int2> moves)
+        public override void RefreshValidMoves(Piece[][] cells, List<Move> moves)
         {
             throw new System.NotImplementedException();
         }

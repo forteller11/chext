@@ -20,6 +20,15 @@ namespace chess_proj.Mechanics.Pieces
             Owner = owner;
             Type = type.ToString();
         }
-        public abstract void RefreshValidMoves(in List<Int2> moves);
+        public abstract void RefreshValidMoves(Piece[][] cells, List<Move> moves);
+
+        protected bool IsInsideBounds(int x, int y, Piece[][] cells)
+        {
+            if (x >= cells.Length) return false;
+            if (x <  0)            return false;
+            if (y >= cells[x].Length) return false;
+            if (y < 0)                return false;
+            return true;
+        }
     }
 }

@@ -8,9 +8,13 @@ namespace chess_proj.Mechanics.Pieces
         
         public Castle(Player owner) : base(owner, 'c') { }
 
-        public override void RefreshValidMoves(in List<Int2> moves)
+        public override void RefreshValidMoves(Piece[][] cells, List<Move> moves)
         {
-            throw new System.NotImplementedException();
+
+            //for (int y = 0; ; y++)
+            {
+                //if (cells[i])
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ namespace chess_proj.Mechanics
     {
         public readonly int Dimensions;
         public readonly Piece?[][] Cells;
-        private readonly List<Int2> ValidMoves;
+        private readonly List<Move> ValidMoves;
         
         
         public Board(int cellCount)
@@ -45,8 +45,17 @@ namespace chess_proj.Mechanics
 
             //is target in list of valid moves
             ValidMoves.Clear();
-            piece.RefreshValidMoves(in ValidMoves);
-            if (!ValidMoves.Contains(target))
+            piece.RefreshValidMoves(Cells, ValidMoves);
+            bool validMovesContainsTarget = false;
+            for (int i = 0; i < ValidMoves.Count; i++)
+            {
+                if (ValidMoves[i].Pos == target)
+                {
+                    validMovesContainsTarget = true;
+                    break;
+                }
+            }
+            if (!validMovesContainsTarget)
             {
                 Console.WriteLine($"Cannot move {piece.Name} to {target}");
                 return;

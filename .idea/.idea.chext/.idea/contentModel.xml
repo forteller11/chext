@@ -26,8 +26,8 @@
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Systems" t="Include">
+          <e p="Board.cs" t="Include" />
           <e p="Game.cs" t="Include" />
-          <e p="Grid.cs" t="Include" />
           <e p="Move.cs" t="Include" />
           <e p="Pieces" t="Include">
             <e p="Bishop.cs" t="Include" />
