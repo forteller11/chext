@@ -1,4 +1,6 @@
 ﻿
+ using System;
+
  namespace chess_proj.Math
 {
     public struct Int2
@@ -18,6 +20,10 @@
         public static Int2 operator -(Int2 a, Int2 b) => new Int2(a.X - b.X, a.Y - b.Y);
         
         public override string ToString() => $"Int2 X: {X}, Y: {Y};";
-        
+
+        public static Int2 FromChessCoordinate(string coordinate) => new Int2(Common.LetterToIndex(coordinate[0]), coordinate[1] - 1);
+        public string ToChessCoordinate() => $"{Common.IndexToLetter(X)} + {Y + 1}";
+
+
     }
 }

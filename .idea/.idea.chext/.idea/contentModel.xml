@@ -8,6 +8,7 @@
       <e p="chess_proj" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="chess_proj.csproj" t="IncludeRecursive" />
+        <e p="Common.cs" t="Include" />
         <e p="Discord" t="Include">
           <e p="Renderer.cs" t="Include" />
         </e>
@@ -27,6 +28,10 @@
         <e p="Program.cs" t="Include" />
         <e p="Systems" t="Include">
           <e p="Board.cs" t="Include" />
+          <e p="Controller" t="Include">
+            <e p="Parser.cs" t="Include" />
+            <e p="Token.cs" t="Include" />
+          </e>
           <e p="Game.cs" t="Include" />
           <e p="Move.cs" t="Include" />
           <e p="Pieces" t="Include">

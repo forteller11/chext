@@ -38,7 +38,6 @@
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Horse.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Private/token.txt" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Game.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Bishop.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/King.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Pawn.cs" />
@@ -49,9 +48,14 @@
         <option value="$PROJECT_DIR$/chess_proj/Systems/Grid.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Board.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Castle.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/MoveHelpers.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Controller/Token.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Controller/Parser.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Common.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Common.cs" />
       </list>
     </option>
   </component>
@@ -95,7 +99,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="47834000" />
+      <workItem from="1610067480524" duration="49569000" />
     </task>
     <servers />
   </component>
@@ -196,36 +200,36 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state x="1126" y="436" key="RiderGenerateDialog/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610227383475" />
-    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup" timestamp="1610226452304">
+    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup" timestamp="1610233351235">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610226452304" />
+    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610233351235" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/chess_proj/Discord/Renderer.cs</url>
-          <line>79</line>
+          <line>80</line>
           <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Discord\Renderer.cs" initialLine="49">
             <startOffsets>
-              <option value="2624" />
+              <option value="2663" />
             </startOffsets>
             <endOffsets>
-              <option value="2667" />
+              <option value="2706" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/chess_proj/Discord/Renderer.cs</url>
-          <line>40</line>
+          <line>41</line>
           <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Discord\Renderer.cs" initialLine="29">
             <startOffsets>
-              <option value="1203" />
+              <option value="1242" />
             </startOffsets>
             <endOffsets>
-              <option value="1281" />
+              <option value="1320" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />

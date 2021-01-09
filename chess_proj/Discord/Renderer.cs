@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using chess_proj.Math;
 using chess_proj.Mechanics;
+using chess_proj.Mechanics.Controller;
 using chess_proj.Mechanics.Pieces;
 using Discord;
 using Discord.Rest;
@@ -134,42 +135,16 @@ namespace chess_proj.Discord
             
             Console.WriteLine("after modify async");
 
-            void SpaceRow(StringBuilder builder)
-            {
-                builder.Append(" \n");
-                builder.Append(new string(' ', BOARD_BORDER_WIDTH));
-                
-                for (int j = 0; j < _board.Dimensions; j++)
-                    builder.Append("|---");
-                
-                builder.Append("|");
-                builder.Append(" \n");
-            }
-
             void LetterRow()
             {
                 _stringBuilder.Append(' ', BOARD_BORDER_WIDTH);
                 for (int i = 0; i < _board.Dimensions; i++)
                 {
-                    _stringBuilder.Append($"  {IndexToLetter(i)} ");
+                    _stringBuilder.Append($"  {Common.IndexToLetter(i)} ");
                 }
             }
 
-            string IndexToLetter(int i)
-            {
-                switch (i)
-                {
-                    case 0: return "a";
-                    case 1: return "b";
-                    case 2: return "c";
-                    case 3: return "d";
-                    case 4: return "e";
-                    case 5: return "f";
-                    case 6: return "g";
-                    case 7: return "h";
-                    default: throw new ArgumentException($"index was {i} but must be between 0-7!");
-                }
-            }
+            
         }
         
  
