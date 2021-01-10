@@ -1,35 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using chess_proj.Controller.Phrases;
 using chess_proj.Math;
+using Discord.WebSocket;
 
 namespace chess_proj.Controller
 {
     public class Parser
     {
-        public event Action<Int2, Int2> MoveAttempt;
-        public event Action<Int2> DisplayMoves;
+        //pregame
+        public event Action<SocketUser> JoinHandler; 
+        
+        //in game
+        public event Action<Int2> DisplayHandler;
+       /// <summary>/// from, to/// </summary>
+        public event Action<Int2, Int2> MoveHandler; 
+        
 
         private List<Token> _tokens = new List<Token>(20);
 
-        public void Parse(string input, int boardDimensions)
+        public void Parse(SocketMessage message, int boardDimensions)
         {
             _tokens.Clear();
-            string[] tokenStrings = input.Split(" ");
+            string[] contentWords = message.Content.Split(" ");
             
             #region create tokens
-            for (int i = 0; i < tokenStrings.Length; i++)
+            for (int i = 0; i < contentWords.Length; i++)
             {
-                var tokenString = tokenStrings[i];
+                var tokenString = contentWords[i].ToLower();
+
                 if (tokenString.Length == 2)
                 {
-                    if (ContainsLabeLetter(tokenString[0]) && ContainsLabeNumber(tokenString[1]))
-                    {
+                    if (ContainsLabelLetter(tokenString[0]) && ContainsLabelNumber(tokenString[1]))
                         _tokens.Add(new Token(tokenString, Token.TokenType.CellCoord));
-                        Program.DebugLog($"Token Created: {tokenString}");
-                        continue;
-                    }
-                    
+                }
+
+                if (tokenString.ToLower() == "join")
+                {
+                    _tokens.Add(new Token(tokenString, Token.TokenType.Join));
                 }
             }
             #endregion
@@ -39,9 +48,10 @@ namespace chess_proj.Controller
             if (_tokens.Count == 1)
             {
                 if (_tokens[0].Type == Token.TokenType.CellCoord)
-                {
-                    DisplayMoves?.Invoke(Common.FromLabelToIndexCoordinate(_tokens[0].Value, boardDimensions));
-                }
+                    DisplayHandler?.Invoke(Common.FromLabelToIndexCoordinate(_tokens[0].Value, boardDimensions));
+                
+                if (_tokens[0].Type == Token.TokenType.Join)
+                    JoinHandler?.Invoke(message.Author);
             }
 
             if (_tokens.Count == 2)
@@ -50,13 +60,13 @@ namespace chess_proj.Controller
                 {
                     var coordFrom = Common.FromLabelToIndexCoordinate(_tokens[0].Value, boardDimensions);
                     var coordTo = Common.FromLabelToIndexCoordinate(_tokens[1].Value, boardDimensions);
-                    MoveAttempt?.Invoke(coordFrom, coordTo);
+                    MoveHandler?.Invoke(coordFrom, coordTo);
                 }
             }
             #endregion
         }
 
-        private bool ContainsLabeLetter(char x)
+        private bool ContainsLabelLetter(char x)
         {
             x = Char.ToLower(x);
             if (x == 'a') return true;
@@ -70,7 +80,7 @@ namespace chess_proj.Controller
             return false;
         }
         
-        private bool ContainsLabeNumber(char x)
+        private bool ContainsLabelNumber(char x)
         {
             if (x == '1') return true;
             if (x == '2') return true;

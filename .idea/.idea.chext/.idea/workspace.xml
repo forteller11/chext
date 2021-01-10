@@ -14,18 +14,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/51/f3319588/Game.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9CD23B5E-3B0C-4F80-A807-33BCFD1D82E1/13E/ThreadPool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/ad/1fb52086/RequestOptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9CD23B5E-3B0C-4F80-A807-33BCFD1D82E1/1E0/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82DFF53F-4E25-412E-AF0F-8A0CAD262CED/61/f0e6bc8f/DiscordSocketClient.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/43/90ee0d3c/EmbedAuthorBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5866DD7D-31EC-4E2C-BF18-A441550B2443/09/15b480d9/Int2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9CD23B5E-3B0C-4F80-A807-33BCFD1D82E1/3DC/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/16/feeee6b1/LogMessage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/00/aa63e44c/EmbedField.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/0b/acb73de1/EmbedBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/chess_proj/Math/Int2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/51/f3319588/Game.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82DFF53F-4E25-412E-AF0F-8A0CAD262CED/08/514e5e51/SocketUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/43/90ee0d3c/EmbedAuthorBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5866DD7D-31EC-4E2C-BF18-A441550B2443/09/15b480d9/Int2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/0b/acb73de1/EmbedBuilder.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -50,7 +51,6 @@
         <option value="$PROJECT_DIR$/chess_proj/Systems/Board.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Game.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Controller/Parser.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Castle.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Common.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
@@ -61,6 +61,10 @@
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/King.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Knight.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Controller/Token.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Controller/Phrase.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Controller/Parser.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Game.cs" />
       </list>
     </option>
   </component>
@@ -104,7 +108,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="61827000" />
+      <workItem from="1610067480524" duration="64646000" />
     </task>
     <servers />
   </component>
@@ -121,22 +125,22 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state width="789" height="464" key="DebuggerActiveHint/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610153821503" />
-    <state width="2455" height="413" key="GridCell.Tab.0.bottom" timestamp="1610250041394">
+    <state width="2455" height="413" key="GridCell.Tab.0.bottom" timestamp="1610253862428">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.bottom/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610250041394" />
-    <state width="2455" height="413" key="GridCell.Tab.0.center" timestamp="1610250041393">
+    <state width="2455" height="413" key="GridCell.Tab.0.bottom/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610253862428" />
+    <state width="2455" height="413" key="GridCell.Tab.0.center" timestamp="1610253862428">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.center/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610250041393" />
-    <state width="2455" height="413" key="GridCell.Tab.0.left" timestamp="1610250041393">
+    <state width="2455" height="413" key="GridCell.Tab.0.center/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610253862428" />
+    <state width="2455" height="413" key="GridCell.Tab.0.left" timestamp="1610253862428">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.left/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610250041393" />
-    <state width="2455" height="413" key="GridCell.Tab.0.right" timestamp="1610250041394">
+    <state width="2455" height="413" key="GridCell.Tab.0.left/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610253862428" />
+    <state width="2455" height="413" key="GridCell.Tab.0.right" timestamp="1610253862428">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610250041394" />
+    <state width="2455" height="413" key="GridCell.Tab.0.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610253862428" />
     <state width="2455" height="535" key="GridCell.Tab.1.bottom" timestamp="1610242252953">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
@@ -209,10 +213,10 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state x="989" y="453" width="644" height="592" key="find.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610240697054" />
-    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup" timestamp="1610244631866">
+    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup" timestamp="1610272197387">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610244631866" />
+    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610272197387" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

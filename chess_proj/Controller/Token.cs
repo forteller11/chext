@@ -9,9 +9,16 @@ namespace chess_proj.Controller
         public TokenType Type;
         public enum TokenType
         {
+            //during game
             CellCoord,
+            DisplayCellMoves,
             Undo,
-            ChexKeyword,
+            
+            //pregame
+            Join,
+            CreateGame,
+            ChexKeyword
+            //todo, token vs phrase/grammer?,
         }
 
         public Token(string value, TokenType type)

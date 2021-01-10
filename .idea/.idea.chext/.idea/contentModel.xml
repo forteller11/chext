@@ -11,6 +11,7 @@
         <e p="Common.cs" t="Include" />
         <e p="Controller" t="Include">
           <e p="Parser.cs" t="Include" />
+          <e p="Phrase.cs" t="Include" />
           <e p="Token.cs" t="Include" />
         </e>
         <e p="Discord" t="Include">

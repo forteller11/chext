@@ -28,8 +28,9 @@ namespace chess_proj.Mechanics
             Black = new Player(false);
             
             _parser = new Parser();
-            _parser.DisplayMoves += OnDisplayMoves;
-            _parser.MoveAttempt += OnMoveAttempt;
+            _parser.DisplayHandler += OnDisplayMoves;
+            _parser.MoveHandler    += OnMove;
+            _parser.JoinHandler    += OnJoin;
             
             _client = client;
             _client.Ready += OnReady;
@@ -94,7 +95,7 @@ namespace chess_proj.Mechanics
                 SetupStandard(_board);
                 
                 _renderer = new Renderer(_chessChannel!, _board);
-                await _renderer.Redraw();
+                await _renderer.DrawBoard();
                 
             }
 
@@ -139,21 +140,29 @@ namespace chess_proj.Mechanics
                 return Task.CompletedTask;
             }
             
-            _parser.Parse(arg.Content, _board.Dimensions);
+            _parser.Parse(arg, _board.Dimensions);
             return Task.CompletedTask;
         }
 
+        private void OnJoin(SocketUser user)
+        {
+            throw new NotImplementedException();
+            //see if can join
+            //is there qualifier join 'black'?
+            //then join
+            //then update embed --> new draw author method
+        }
         private void OnDisplayMoves(Int2 position)
         {
             _renderer.DisplayMoves(position);
-            _renderer.Redraw();
+            _renderer.DrawBoard();
         }
         
-        private void OnMoveAttempt(Int2 from, Int2 to)
+        private void OnMove(Int2 from, Int2 to)
         {
             Program.DebugLog("move attempt");
             _board.MovePiece(Black, from, to);
-            _renderer.Redraw();
+            _renderer.DrawBoard();
         }
     }
 }

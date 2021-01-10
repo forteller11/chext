@@ -64,7 +64,7 @@ namespace chess_proj.Discord
                     Effects[i][j] = '\0';
             }
         }
-        public async Task Redraw()
+        public async Task DrawBoard()
         {
             Program.DebugLog("Redraw");
             //if you haven't drawn first message yet
