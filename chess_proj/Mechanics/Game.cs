@@ -12,7 +12,7 @@ namespace chext.Mechanics
 {
     public class Game
     {
-        public readonly SocketTextChannel Channel;
+        public readonly ISocketMessageChannel Channel;
         
         
         public Player White;
@@ -24,7 +24,7 @@ namespace chext.Mechanics
         
         private static string CHEX_CHANNEL_NAME = "__chex__";
 
-        public Game(SocketTextChannel channel, ulong blackPlayerId, ulong whitePlayerId)
+        public Game(ISocketMessageChannel channel, SocketUser whitePlayerId, SocketUser blackPlayerId)
         {
             Channel = channel;
             Black = new Player(blackPlayerId, false);
@@ -36,10 +36,9 @@ namespace chext.Mechanics
 
             _board = new Board();
             _renderer = new Renderer(Channel!, _board);
-
         }
 
-        public async void Init()
+        public async void SetupAndRender()
         {
             SetupStandard(_board);
             await _renderer.DrawBoard();
@@ -91,29 +90,18 @@ namespace chext.Mechanics
             _renderer.DrawBoard();
         }
         
-        private void OnMove(Int2 from, Int2 to, bool isMoverWhite)
+        private void OnMove(Int2 from, Int2 to, SocketUser author)
         {
-            Player? mover;
-            Player? opp;
-            if (author.Id == Black.Id)
-            {
-                mover = Black;
-                opp = White;
-            }
-            else if (author.Id == White.Id)
-            {
-                mover = White;
-                opp = Black;
-            }
-            else
+            Program.DebugLog("move attempt");
+            
+            if (author.Id == White.Id)
+                _board.MovePiece(White, Black, from, to);
+            else if (author.Id == Black.Id)
+                _board.MovePiece(Black, White, from, to);
+            else //author wasn't part of the game... don't do anything
                 return;
             
-            if (author.Id != Black.Id)
-            {
-                Program.DebugLog("move attempt");
-                _board.MovePiece(mover, opp, from, to);
-                _renderer.DrawBoard();
-            }
+            _renderer.DrawBoard();
         }
     }
 }

@@ -1,7 +1,5 @@
 ﻿
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using chext.Discord.Parsing;
 using chext.Mechanics;
@@ -11,12 +9,20 @@ using Discord.WebSocket;
 
 namespace chext.Discord
 {
+    
     public class GamesManager
     {
         private PreGameParser _parser;
-
         private DiscordSocketClient _client;
+        
         private Dictionary<ulong, Game> _games = new Dictionary<ulong, Game>();
+        
+        class GameProposal
+        {
+            public SocketUser? BlackPlayer;
+            public SocketUser? WhitePlayer;
+        }
+        private Dictionary<ulong, GameProposal> _proposals = new Dictionary<ulong, GameProposal>();
 
         /// <summary>
         /// assumed to be called after _client is Ready()
@@ -24,6 +30,7 @@ namespace chext.Discord
         /// <param name="client"></param>
         public GamesManager(DiscordSocketClient client)
         {
+            Program.DebugLog("Game manger created");
             _client = client;
             
             _parser = new PreGameParser();
@@ -57,16 +64,36 @@ namespace chext.Discord
             
             return Task.CompletedTask;
         }
-        
-        private void OnJoin(SocketUser user)
+
+        private void OnJoin(SocketUser user, ISocketMessageChannel channel)
         {
-            throw new NotImplementedException();
-            //see if can join
-            //is there qualifier join 'black'?
-            //then join
-            //then update embed --> new draw author method
-            //if both players filled, create new game
+            var channelId = channel.Id;
+
+            if (_proposals.ContainsKey(channelId)) //if there is already an active proposal
+            {
+                var proposal = _proposals[channelId];
+                if (proposal.WhitePlayer == null)
+                {
+                    proposal.WhitePlayer = user;
+                    Program.DebugLog($"{user.Username} joined white side!");
+                }
+                else
+                {
+                    proposal.BlackPlayer = user;
+                    Program.DebugLog($"{user.Username} joined black side!");
+                }
+
+                if (proposal.BlackPlayer != null && proposal.BlackPlayer != null)
+                {
+                    Program.DebugLog($"new game created!");
+                    var game = new Game(channel, proposal.WhitePlayer, proposal.BlackPlayer);
+                    game.SetupAndRender();
+                    _games.Add(channelId, game);
+                }
+            }
         }
+
+
 
         //responsible for creating new games, passing in parser, and joining platers, starting games
     }

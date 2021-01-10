@@ -7,7 +7,7 @@ namespace chext.Discord.Parsing
     public class PreGameParser
     {
         public event Action GameProposalHandler; 
-        public event Action<SocketUser> JoinHandler; 
+        public event Action<SocketUser, ISocketMessageChannel> JoinHandler; 
         
         private List<PreGameToken> _tokens = new List<PreGameToken>(20);
         
@@ -36,7 +36,7 @@ namespace chext.Discord.Parsing
             if (_tokens.Count == 1)
             {
                 if (_tokens[0].Type == PreGameToken.TokenType.Join)
-                    JoinHandler?.Invoke(message.Author);
+                    JoinHandler?.Invoke(message.Author, message.Channel);
             }
 
             if (_tokens.Count == 2)

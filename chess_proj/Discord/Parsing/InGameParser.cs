@@ -10,7 +10,7 @@ namespace chext.Discord.Parsing
 
         public event Action<Int2> DisplayHandler;
        /// <summary>/// from, to, is mover white?/// </summary>
-        public event Action<Int2, Int2, bool> MoveHandler; 
+        public event Action<Int2, Int2, SocketUser> MoveHandler; 
         
 
         private List<InGameToken> _tokens = new List<InGameToken>(20);
@@ -48,7 +48,7 @@ namespace chext.Discord.Parsing
                 {
                     var coordFrom = Common.FromLabelToIndexCoordinate(_tokens[0].Value, boardDimensions);
                     var coordTo = Common.FromLabelToIndexCoordinate(_tokens[1].Value, boardDimensions);
-                    MoveHandler?.Invoke(coordFrom, coordTo);
+                    MoveHandler?.Invoke(coordFrom, coordTo, message.Author);
                 }
             }
             
