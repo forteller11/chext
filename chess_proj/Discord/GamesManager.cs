@@ -40,9 +40,14 @@ namespace chext.Discord
             _client.MessageReceived += OnMessageReceived;
         }
 
-        public void OnGameProposalProposal()
+        public void OnGameProposalProposal(ISocketMessageChannel channel)
         {
-            //create game, add parser which only listens to channel
+            Program.DebugLog($"New Game Proposal at {channel.Name}");
+            
+            if (!_proposals.ContainsKey(channel.Id))
+            {
+                _proposals.Add(channel.Id, new GameProposal());
+            }
         }
 
         public Task OnMessageReceived(SocketMessage message)
@@ -56,7 +61,7 @@ namespace chext.Discord
             foreach (var gameKV in _games)
             {
                 var game = gameKV.Value;
-                if (message.Id == game.Channel.Id)
+                if (message.Channel.Id == game.Channel.Id)
                 {
                     game.InChannelNonSelfMessageReceived(message);
                 }
