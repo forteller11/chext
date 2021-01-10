@@ -57,9 +57,8 @@ namespace chess_proj
         
         public static Int2 FromLabelToIndexCoordinate(string coordinate, int boardDimensions)
         {
-            int x = LetterToIndex(coordinate[0]);
-            int y = ParseCharToInt(coordinate[1]) -1;
-            
+            int x = boardDimensions - ParseCharToInt(coordinate[1]);
+            int y = LetterToIndex(coordinate[0]);
             return new Int2(x,y);
         }
         

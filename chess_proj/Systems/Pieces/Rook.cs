@@ -4,10 +4,10 @@ using chess_proj.Math;
 #nullable enable
 namespace chess_proj.Mechanics.Pieces
 {
-    public class Castle : Piece
+    public class Rook : Piece
     {
         
-        public Castle(Player owner) : base(owner, 'c') { }
+        public Rook(Player owner) : base(owner, 'r') { }
 
         public override void RefreshValidMoves(Int2 piecePosition, Piece?[][] cells, List<Move> moves)
         {

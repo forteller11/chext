@@ -107,7 +107,7 @@ namespace chess_proj.Mechanics
             SetupRowNonPawns(0, White);
             SetupRowNonPawns(7, Black);
             
-            board.SetCell(4, 4, new Castle(Black));
+            board.SetCell(4, 4, new Rook(Black));
             
             void SetupPawnRow(int rowIndex, Player player)
             {
@@ -116,8 +116,8 @@ namespace chess_proj.Mechanics
             }
             void SetupRowNonPawns(int rowIndex, Player player)
             {
-                board.SetCell(rowIndex, 0, new Castle(player));
-                board.SetCell(rowIndex, 7, new Castle(player));
+                board.SetCell(rowIndex, 0, new Rook(player));
+                board.SetCell(rowIndex, 7, new Rook(player));
                 board.SetCell(rowIndex, 1, new Knight(player));
                 board.SetCell(rowIndex, 6, new Knight(player));
                 board.SetCell(rowIndex, 2, new Bishop(player));
