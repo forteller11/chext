@@ -8,17 +8,17 @@ namespace chess_proj.Mechanics.Pieces
 {
     public abstract class Piece
     {
-        public readonly Player Owner;
-        public string Name => Owner.IsWhite ? $" {Type.ToUpper()} " : $"`{Type.ToLower()} ";  //wasting mem
+        public string Name => IsWhite ? $" {Type.ToUpper()} " : $"`{Type.ToLower()} ";  //wasting mem
         public readonly string Type; //wasting mem
+        public readonly bool IsWhite;
         
         //public string EmoteName => "\\:__" + Name + "__:";
        // public string EmoteName => "<:__rook__:797330289474142239>";
 
        //todo piece shouldn't know owner
-       public Piece(Player owner, char type)
+       public Piece(bool isWhite, char type)
         {
-            Owner = owner;
+            IsWhite = isWhite;
             Type = type.ToString();
         }
         public abstract void RefreshValidMoves(Int2 piecePosition, Piece?[][] cells, List<Move> moves);
@@ -55,9 +55,11 @@ namespace chess_proj.Mechanics.Pieces
             if (!IsWithinBounds(target, cells))
                 return false;
 
-            if (cells[target.X][target.Y] != null)
+            var cell = cells[target.X][target.Y];
+            if (cell != null)
             {
-                moves.Add(new Move(target, initialPosition));
+                if (IsWhite != cell.IsWhite) //if piece on other side
+                    moves.Add(new Move(target, initialPosition));
                 return false;
             }
 

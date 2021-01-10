@@ -6,10 +6,12 @@ namespace chess_proj.Mechanics
     public class Player
     {
         public List<Piece> Captured = new List<Piece>();
-        public bool IsWhite;
+        public readonly bool IsWhite;
+        public readonly ulong Id;
 
-        public Player(bool isWhite)
+        public Player(ulong id, bool isWhite)
         {
+            Id = id;
             IsWhite = isWhite;
         }
     }

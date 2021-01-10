@@ -7,7 +7,7 @@ namespace chess_proj.Mechanics.Pieces
     public class Rook : Piece
     {
         
-        public Rook(Player owner) : base(owner, 'r') { }
+        public Rook(bool isWhite) : base(isWhite, 'r') { }
 
         public override void RefreshValidMoves(Int2 piecePosition, Piece?[][] cells, List<Move> moves)
         {

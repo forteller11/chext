@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using chess_proj.Controller.Phrases;
 using chess_proj.Math;
 using Discord.WebSocket;
 

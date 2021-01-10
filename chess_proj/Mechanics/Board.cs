@@ -38,7 +38,7 @@ namespace chess_proj.Mechanics
             return _validMoves;
         }
         
-        public void MovePiece(Player actor, Int2 from, Int2 target)
+        public void MovePiece(Player actor, Player opponent, Int2 from, Int2 target)
         {
             var piece = GetCell(from);
 
@@ -49,7 +49,7 @@ namespace chess_proj.Mechanics
             }
             
             //make sure piece is owned by actor
-            if (piece.Owner != actor)
+            if (piece.IsWhite != actor.IsWhite)
             {
                 Console.WriteLine($"{piece.Name} not owned by actor");
                 return;
@@ -77,7 +77,7 @@ namespace chess_proj.Mechanics
             if (GetCell(target) != null)
             {
                 var takenPiece = GetCell(target);
-                takenPiece!.Owner.Captured.Add(takenPiece);
+                opponent.Captured.Add(takenPiece);
                 Cells[target.X][target.Y] = null;
             }
             

@@ -5,7 +5,7 @@ namespace chess_proj.Mechanics.Pieces
 {
     public class Queen : Piece
     {
-        public Queen(Player owner) : base(owner, 'q') { }
+        public Queen(bool isWhite) : base(isWhite, 'q') { }
 
         public override void RefreshValidMoves(Int2 piecePosition, Piece[][] cells, List<Move> moves)
         {

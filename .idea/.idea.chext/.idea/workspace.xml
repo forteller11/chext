@@ -57,13 +57,18 @@
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Rook.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Bishop.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Queen.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Piece.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/King.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Knight.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Controller/Token.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Controller/Phrase.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Knight.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Rook.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/King.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Controller/Parser.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Bishop.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Board.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Piece.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Pawn.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Queen.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Player.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Game.cs" />
       </list>
     </option>
@@ -108,7 +113,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="64646000" />
+      <workItem from="1610067480524" duration="66056000" />
     </task>
     <servers />
   </component>
