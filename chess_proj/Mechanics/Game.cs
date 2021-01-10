@@ -151,7 +151,9 @@ namespace chess_proj.Mechanics
         
         private void OnMoveAttempt(Int2 from, Int2 to)
         {
-            
+            Program.DebugLog("move attempt");
+            _board.MovePiece(Black, from, to);
+            _renderer.Redraw();
         }
     }
 }
