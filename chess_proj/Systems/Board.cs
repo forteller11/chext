@@ -24,8 +24,19 @@ namespace chess_proj.Mechanics
 
 
         }
-        
 
+
+        public List<Move> GetMoves(Int2 position)
+        {
+            ValidMoves.Clear();
+            var piece = GetCell(position);
+            if (piece == null)
+                return ValidMoves;
+            
+            piece.RefreshValidMoves(position, Cells, ValidMoves);
+            return ValidMoves;
+        }
+        
         public void MovePiece(Player actor, Int2 from, Int2 target)
         {
             var piece = GetCell(from);

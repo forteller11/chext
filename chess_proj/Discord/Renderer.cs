@@ -3,8 +3,6 @@ using System.Text;
 using System.Threading.Tasks;
 using chess_proj.Math;
 using chess_proj.Mechanics;
-using chess_proj.Mechanics.Controller;
-using chess_proj.Mechanics.Pieces;
 using Discord;
 using Discord.Rest;
 using Discord.WebSocket;
@@ -32,13 +30,8 @@ namespace chess_proj.Discord
             _board = board;
 
             Effects = new char[_board.Dimensions][];
-            for (int i = 0; i < _board.Dimensions; i++)
-            {
-                Effects[i] = new char[_board.Dimensions];
-                for (int j = 0; j < _board.Dimensions; j++)
-                    Effects[i][j] = '\0';
-                
-            }
+            ClearEffects();
+            
             _stringBuilder = new StringBuilder(_board.Dimensions * _board.Dimensions * 6);
             _stringBuilder.Append('#', _stringBuilder.Capacity);
             
@@ -47,7 +40,25 @@ namespace chess_proj.Discord
             _embedBuilder.Title = "Chex";
         }
 
-        
+        public void DisplayMoves(Int2 position)
+        {
+            var moves =_board.GetMoves(position);
+            for (int i = 0; i < moves.Count; i++)
+            {
+                var p = moves[i].Pos;
+                Effects[p.X][p.Y] = '.';
+            }
+        }
+
+        public void ClearEffects()
+        {
+            for (int i = 0; i < _board.Dimensions; i++)
+            {
+                Effects[i] = new char[_board.Dimensions];
+                for (int j = 0; j < _board.Dimensions; j++)
+                    Effects[i][j] = '\0';
+            }
+        }
         public async Task Redraw()
         {
             Console.WriteLine("Redraw");

@@ -37,7 +37,6 @@
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Rook.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Horse.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Private/token.txt" />
-        <option value="$PROJECT_DIR$/chess_proj/Systems/Game.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Bishop.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/King.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Pawn.cs" />
@@ -46,16 +45,18 @@
         <option value="$PROJECT_DIR$/chess_proj/Math/Move.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Move.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Grid.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Systems/Board.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Castle.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/MoveHelpers.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Systems/Controller/Token.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Systems/Controller/Parser.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Common.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Common.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Controller/Parser.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Controller/Token.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Controller/Parser.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Board.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Game.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
       </list>
     </option>
   </component>
@@ -99,7 +100,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="49569000" />
+      <workItem from="1610067480524" duration="52576000" />
     </task>
     <servers />
   </component>
@@ -210,26 +211,26 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/chess_proj/Discord/Renderer.cs</url>
-          <line>80</line>
+          <line>91</line>
           <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Discord\Renderer.cs" initialLine="49">
             <startOffsets>
-              <option value="2663" />
+              <option value="2935" />
             </startOffsets>
             <endOffsets>
-              <option value="2706" />
+              <option value="2978" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/chess_proj/Discord/Renderer.cs</url>
-          <line>41</line>
+          <line>34</line>
           <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Discord\Renderer.cs" initialLine="29">
             <startOffsets>
-              <option value="1242" />
+              <option value="948" />
             </startOffsets>
             <endOffsets>
-              <option value="1320" />
+              <option value="1026" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />

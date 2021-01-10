@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
+using chess_proj.Controller;
 using chess_proj.Discord;
 using chess_proj.Math;
 using chess_proj.Mechanics.Pieces;
@@ -17,6 +17,7 @@ namespace chess_proj.Mechanics
         private SocketTextChannel? _chessChannel;
         private Renderer _renderer;
         private Board _board;
+        private Parser _parser;
         public Player White;
         public Player Black;
         private static string CHEX_CHANNEL_NAME = "__chex__";
@@ -26,12 +27,16 @@ namespace chess_proj.Mechanics
             White = new Player(true);
             Black = new Player(false);
             
+            _parser = new Parser();
+            _parser.DisplayMoves += OnDisplayMoves;
+            _parser.MoveAttempt += OnMoveAttempt;
+            
             _client = client;
             _client.Ready += OnReady;
             _client.MessageReceived += OnMessageReceived;
             //_client.ChannelCreated  += OnChannelCreated; //todo make sure no chex name
         }
-        
+
         private async Task OnReady()
         {
             Console.WriteLine(_client.Guilds.Count);
@@ -127,6 +132,7 @@ namespace chess_proj.Mechanics
         private Task OnMessageReceived(SocketMessage arg)
         {
             Console.WriteLine("msg received");
+            _parser.Parse(arg.Content);
             if (arg.Author.Id == _client.CurrentUser.Id)
             {
                 Console.WriteLine("chex sent/received msg"); return Task.CompletedTask;
@@ -134,6 +140,17 @@ namespace chess_proj.Mechanics
 
             _renderer.Redraw();
             return Task.CompletedTask;
+        }
+
+        private void OnDisplayMoves(Int2 position)
+        {
+            _renderer.DisplayMoves(position);
+            _renderer.Redraw();
+        }
+        
+        private void OnMoveAttempt(Int2 from, Int2 to)
+        {
+            
         }
     }
 }
