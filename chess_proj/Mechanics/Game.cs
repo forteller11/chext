@@ -1,107 +1,59 @@
 ﻿using System;
 using System.Threading.Tasks;
-using chess_proj.Controller;
-using chess_proj.Discord;
-using chess_proj.Math;
-using chess_proj.Mechanics.Pieces;
-using Discord.Rest;
+using chext.Discord.Parsing;
+using chext.Discord;
+using chext.Math;
+using chext.Mechanics.Pieces;
 using Discord.WebSocket;
 
 #nullable enable
 
-namespace chess_proj.Mechanics
+namespace chext.Mechanics
 {
     public class Game
     {
-        private DiscordSocketClient _client;
-        private SocketTextChannel? _chessChannel;
+        public readonly SocketTextChannel Channel;
+        
+        
+        public Player White;
+        public Player Black;
+       
         private Renderer _renderer;
         private Board _board;
-        private Parser _parser;
-        public Player? White;
-        public Player? Black;
+        private InGameParser _inGameParser;
+        
         private static string CHEX_CHANNEL_NAME = "__chex__";
 
-        public Game(DiscordSocketClient client)
+        public Game(SocketTextChannel channel, ulong blackPlayerId, ulong whitePlayerId)
         {
-            White = new Player(true);
-            Black = new Player(false);
+            Channel = channel;
+            Black = new Player(blackPlayerId, false);
+            White = new Player(whitePlayerId, true);
             
-            _parser = new Parser();
-            _parser.DisplayHandler += OnDisplayMoves;
-            _parser.MoveHandler    += OnMove;
-            _parser.JoinHandler    += OnJoin;
-            
-            _client = client;
-            _client.Ready += OnReady;
-            _client.MessageReceived += OnMessageReceived;
-            //_client.ChannelCreated  += OnChannelCreated; //todo make sure no chex name
-        }
+            _inGameParser = new InGameParser();
+            _inGameParser.DisplayHandler += OnDisplayMoves;
+            _inGameParser.MoveHandler    += OnMove;
 
-        private async Task OnReady()
-        {
-            Program.DebugLog(_client.Guilds.Count);
-            foreach (var guild in _client.Guilds)
-            {
-                #region find or create _chessChannel in guilds
-                #region find server named chex
-                bool hasChessChannel = false;
-                Program.DebugLog("guild");
-                Program.DebugLog(guild.Name);
-                foreach (var channel in guild.TextChannels)
-                {
-                    Program.DebugLog("channel");
-                    Program.DebugLog($"{channel.Name} == {CHEX_CHANNEL_NAME}");
-                    if (channel.Name == CHEX_CHANNEL_NAME)
-                    {
-                        hasChessChannel = true;
-                        _chessChannel = channel;
-                        Program.DebugLog("FOUND CHEX CHANNEL");
-                        break;
-                    }
-
-                }
-                #endregion
-                #region create new if no chex server found
-                if (hasChessChannel == false) //IF not chex channel found in server, create it and then find it agfain
-                {
-                    //todo CREATE NEW CHANNEL WHEN THIS RETURNS
-                    //LIKE AWAIT WITHOUT MAKING METHOD ASYNC
-                    await guild.CreateTextChannelAsync(CHEX_CHANNEL_NAME, properties =>
-                    {
-                        properties.Topic = "CHEX";
-                        properties.Position = 0;
-                    });
-                    
-                    Program.DebugLog("CREATED TEXT CHANNEL");
-                    
-                    foreach (var channel in guild.TextChannels)
-                    {
-                        if (channel.Name == CHEX_CHANNEL_NAME)
-                        {
-                            _chessChannel = channel;
-                            Program.DebugLog("FOUND NEWLY CREATED CHEX CHANNEL");
-                            break;
-                        }
-
-                    }
-                    
-                }
-                #endregion
-                
-                #endregion
-                
-                _board = new Board();
-                SetupStandard(_board);
-                
-                _renderer = new Renderer(_chessChannel!, _board);
-                await _renderer.DrawBoard();
-                
-            }
+            _board = new Board();
+            _renderer = new Renderer(Channel!, _board);
 
         }
 
-        void SetupStandard(Board board) //todo should be boards care
+        public async void Init()
+        {
+            SetupStandard(_board);
+            await _renderer.DrawBoard();
+        }
+        
+        
+        /// <summary>/// assumed to be channel in own channel, and message not from own chext bot client/// </summary>
+        public void InChannelNonSelfMessageReceived(SocketMessage message)
+        {
+            Program.DebugLog("msg received game");
+            _inGameParser.Parse(message, _board.Dimensions);
+        }
+
+        public void SetupStandard(Board board) //todo should be boards care
         {
             //SetupPawnRow(1, White);
             //SetupPawnRow(6, Black);
@@ -131,35 +83,15 @@ namespace chess_proj.Mechanics
     
             }
         }
-
-        private Task OnMessageReceived(SocketMessage arg)
-        {
-            Program.DebugLog("msg received");
-            if (arg.Author.Id == _client.CurrentUser.Id)
-            {
-                Program.DebugLog("chex sent/received msg");
-                return Task.CompletedTask;
-            }
-            
-            _parser.Parse(arg, _board.Dimensions);
-            return Task.CompletedTask;
-        }
-
-        private void OnJoin(SocketUser user)
-        {
-            throw new NotImplementedException();
-            //see if can join
-            //is there qualifier join 'black'?
-            //then join
-            //then update embed --> new draw author method
-        }
+        
+        
         private void OnDisplayMoves(Int2 position)
         {
             _renderer.DisplayMoves(position);
             _renderer.DrawBoard();
         }
         
-        private void OnMove(Int2 from, Int2 to, SocketUser author)
+        private void OnMove(Int2 from, Int2 to, bool isMoverWhite)
         {
             Player? mover;
             Player? opp;

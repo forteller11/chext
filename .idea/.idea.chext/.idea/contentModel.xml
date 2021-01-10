@@ -9,11 +9,15 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="chess_proj.csproj" t="IncludeRecursive" />
         <e p="Common.cs" t="Include" />
-        <e p="Controller" t="Include">
-          <e p="Parser.cs" t="Include" />
-          <e p="Token.cs" t="Include" />
-        </e>
+        <e p="Controller" t="Include" />
         <e p="Discord" t="Include">
+          <e p="GamesManager.cs" t="Include" />
+          <e p="Parsing" t="Include">
+            <e p="InGameParser.cs" t="Include" />
+            <e p="InGameToken.cs" t="Include" />
+            <e p="PreGameParser.cs" t="Include" />
+            <e p="PreGameToken.cs" t="Include" />
+          </e>
           <e p="Renderer.cs" t="Include" />
         </e>
         <e p="mATH" t="Include">

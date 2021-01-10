@@ -1,7 +1,7 @@
 ﻿using System;
-using chess_proj.Math;
+using chext.Math;
 
-namespace chess_proj.Mechanics
+namespace chext.Mechanics
 {
     public struct Move : IEquatable<Move>
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using chess_proj.Math;
-using chess_proj.Mechanics.Pieces;
+using chext.Math;
+using chext.Mechanics.Pieces;
 
 #nullable enable
-namespace chess_proj.Mechanics
+namespace chext.Mechanics
 {
     public class Board
     {

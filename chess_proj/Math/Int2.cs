@@ -1,7 +1,7 @@
 ﻿
  using System;
 
- namespace chess_proj.Math
+ namespace chext.Math
 {
     public struct Int2
     {

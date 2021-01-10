@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace chess_proj.Controller
+namespace chext.Discord.Parsing
 {
-    public struct Token
+    public struct InGameToken
     {
         public string Value;
         public TokenType Type;
@@ -13,15 +13,9 @@ namespace chess_proj.Controller
             CellCoord,
             DisplayCellMoves,
             Undo,
-            
-            //pregame
-            Join,
-            CreateGame,
-            ChexKeyword
-            //todo, token vs phrase/grammer?,
         }
 
-        public Token(string value, TokenType type)
+        public InGameToken(string value, TokenType type)
         {
             Value = value;
             Type = type;

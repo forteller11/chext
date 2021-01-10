@@ -1,7 +1,7 @@
 ﻿using System;
-using chess_proj.Math;
+using chext.Math;
 
-namespace chess_proj
+namespace chext
 {
     public static class Common
     {

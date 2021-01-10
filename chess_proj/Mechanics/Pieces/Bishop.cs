@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using chess_proj.Math;
+using chext.Math;
 
-namespace chess_proj.Mechanics.Pieces
+namespace chext.Mechanics.Pieces
 {
     public class Bishop : Piece
     {

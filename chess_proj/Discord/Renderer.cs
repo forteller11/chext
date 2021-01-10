@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
-using chess_proj.Math;
-using chess_proj.Mechanics;
+using chext.Math;
+using chext.Mechanics;
 using Discord;
 using Discord.Rest;
 using Discord.WebSocket;
 
 #nullable enable
-namespace chess_proj.Discord
+namespace chext.Discord
 {
     public class Renderer
     {

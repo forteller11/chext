@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using chess_proj.Math;
+using chext.Math;
 
 #nullable enable
 
-namespace chess_proj.Mechanics.Pieces
+namespace chext.Mechanics.Pieces
 {
     public abstract class Piece
     {

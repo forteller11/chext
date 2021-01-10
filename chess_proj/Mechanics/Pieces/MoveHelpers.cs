@@ -1,4 +1,4 @@
-﻿namespace chess_proj.Mechanics.Pieces
+﻿namespace chext.Mechanics.Pieces
 {
     public static class MoveHelpers
     {

@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using chess_proj.Math;
+using chext.Math;
 using Discord.WebSocket;
 
-namespace chess_proj.Controller
+namespace chext.Discord.Parsing
 {
-    public class Parser
+    public class InGameParser
     {
-        //pregame
-        public event Action<SocketUser> JoinHandler; 
-        
-        //in game
+
         public event Action<Int2> DisplayHandler;
-       /// <summary>/// from, to/// </summary>
-        public event Action<Int2, Int2> MoveHandler; 
+       /// <summary>/// from, to, is mover white?/// </summary>
+        public event Action<Int2, Int2, bool> MoveHandler; 
         
 
-        private List<Token> _tokens = new List<Token>(20);
+        private List<InGameToken> _tokens = new List<InGameToken>(20);
 
         public void Parse(SocketMessage message, int boardDimensions)
         {
@@ -31,36 +28,30 @@ namespace chess_proj.Controller
                 if (tokenString.Length == 2)
                 {
                     if (ContainsLabelLetter(tokenString[0]) && ContainsLabelNumber(tokenString[1]))
-                        _tokens.Add(new Token(tokenString, Token.TokenType.CellCoord));
+                        _tokens.Add(new InGameToken(tokenString, InGameToken.TokenType.CellCoord));
                 }
-
-                if (tokenString.ToLower() == "join")
-                {
-                    _tokens.Add(new Token(tokenString, Token.TokenType.Join));
-                }
+                
             }
             #endregion
             
+            
             #region trigger events depending on grammer
-
             if (_tokens.Count == 1)
             {
-                if (_tokens[0].Type == Token.TokenType.CellCoord)
+                if (_tokens[0].Type == InGameToken.TokenType.CellCoord)
                     DisplayHandler?.Invoke(Common.FromLabelToIndexCoordinate(_tokens[0].Value, boardDimensions));
-                
-                if (_tokens[0].Type == Token.TokenType.Join)
-                    JoinHandler?.Invoke(message.Author);
             }
 
             if (_tokens.Count == 2)
             {
-                if (_tokens[0].Type == Token.TokenType.CellCoord && _tokens[1].Type == Token.TokenType.CellCoord)
+                if (_tokens[0].Type == InGameToken.TokenType.CellCoord && _tokens[1].Type == InGameToken.TokenType.CellCoord)
                 {
                     var coordFrom = Common.FromLabelToIndexCoordinate(_tokens[0].Value, boardDimensions);
                     var coordTo = Common.FromLabelToIndexCoordinate(_tokens[1].Value, boardDimensions);
                     MoveHandler?.Invoke(coordFrom, coordTo);
                 }
             }
+            
             #endregion
         }
 

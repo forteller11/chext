@@ -47,7 +47,6 @@
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Common.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Controller/Parser.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Controller/Token.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Program.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Board.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Game.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
@@ -57,19 +56,26 @@
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Rook.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Bishop.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Controller/Token.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Controller/Phrase.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Knight.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Rook.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/King.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Controller/Parser.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Bishop.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Board.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Pawn.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Queen.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Player.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Controller/Token.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Controller/Parser.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/GameCreator.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Parsing/InGameToken.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Parsing/PreGameToken.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Parsing/PreGameParser.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Program.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/GamesManager.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Game.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Parsing/InGameParser.cs" />
       </list>
     </option>
   </component>
@@ -113,7 +119,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="66056000" />
+      <workItem from="1610067480524" duration="72580000" />
     </task>
     <servers />
   </component>
@@ -218,10 +224,10 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state x="989" y="453" width="644" height="592" key="find.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610240697054" />
-    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup" timestamp="1610272197387">
+    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup" timestamp="1610307212655">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610272197387" />
+    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610307212655" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -244,10 +250,10 @@
           <line>43</line>
           <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Common.cs" initialLine="43">
             <startOffsets>
-              <option value="1240" />
+              <option value="1230" />
             </startOffsets>
             <endOffsets>
-              <option value="1249" />
+              <option value="1239" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="19" />
