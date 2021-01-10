@@ -15,15 +15,14 @@ namespace chess_proj.Mechanics
         
         public Board(int cellCount)
         {
-
             Dimensions = cellCount;
             Cells = new Piece[Dimensions][];
             for (int i = 0; i < Cells.Length; i++)
                 Cells[i] = new Piece[Dimensions];
             
-
-
         }
+        
+        
 
 
         public List<Move> GetMoves(Int2 position)

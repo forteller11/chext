@@ -15,7 +15,8 @@ namespace chess_proj.Mechanics.Pieces
         //public string EmoteName => "\\:__" + Name + "__:";
        // public string EmoteName => "<:__rook__:797330289474142239>";
 
-        public Piece(Player owner, char type)
+       //todo piece shouldn't know owner
+       public Piece(Player owner, char type)
         {
             Owner = owner;
             Type = type.ToString();

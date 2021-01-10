@@ -100,13 +100,14 @@ namespace chess_proj.Mechanics
 
         }
 
-        void SetupStandard(Board board)
+        void SetupStandard(Board board) //todo should be boards care
         {
-            SetupPawnRow(1, White);
-            SetupPawnRow(6, Black);
+            //SetupPawnRow(1, White);
+            //SetupPawnRow(6, Black);
             SetupRowNonPawns(0, White);
             SetupRowNonPawns(7, Black);
             
+            board.SetCell(4, 4, new Castle(Black));
             
             void SetupPawnRow(int rowIndex, Player player)
             {
@@ -137,8 +138,7 @@ namespace chess_proj.Mechanics
             {
                 Console.WriteLine("chex sent/received msg"); return Task.CompletedTask;
             }
-
-            _renderer.Redraw();
+            
             return Task.CompletedTask;
         }
 

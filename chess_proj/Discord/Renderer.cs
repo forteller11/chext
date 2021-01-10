@@ -42,12 +42,16 @@ namespace chess_proj.Discord
 
         public void DisplayMoves(Int2 position)
         {
+            ClearEffects();
+            Console.WriteLine("Display moves effects");
             var moves =_board.GetMoves(position);
             for (int i = 0; i < moves.Count; i++)
             {
                 var p = moves[i].Pos;
                 Effects[p.X][p.Y] = '.';
             }
+
+            Console.WriteLine("Display moves end");
         }
 
         public void ClearEffects()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using chess_proj.Math;
 
 namespace chess_proj.Controller
@@ -16,7 +17,7 @@ namespace chess_proj.Controller
             _tokens.Clear();
             string[] tokenStrings = input.Split(" ");
             
-            
+            #region create tokens
             for (int i = 0; i < tokenStrings.Length; i++)
             {
                 var tokenString = tokenStrings[i];
@@ -25,11 +26,33 @@ namespace chess_proj.Controller
                     if (ContainsLabeLetter(tokenString[0]) && ContainsLabeNumber(tokenString[1]))
                     {
                         _tokens.Add(new Token(tokenString, Token.TokenType.CellCoord));
+                        Console.WriteLine($"Token Created: {tokenString}");
                         continue;
                     }
                     
                 }
             }
+            #endregion
+            
+            #region trigger events depending on grammer
+
+            if (_tokens.Count == 1)
+            {
+                if (_tokens[0].Type == Token.TokenType.CellCoord)
+                {
+                    Console.WriteLine("displaymoves");
+                    DisplayMoves?.Invoke(Int2.FromChessCoordinate(_tokens[0].Value));
+                }
+            }
+
+            if (_tokens.Count == 2)
+            {
+                if (_tokens[0].Type == Token.TokenType.CellCoord && _tokens[1].Type == Token.TokenType.CellCoord)
+                {
+                    MoveAttempt?.Invoke(Int2.FromChessCoordinate(_tokens[0].Value), Int2.FromChessCoordinate(_tokens[1].Value));
+                }
+            }
+            #endregion
         }
 
         private bool ContainsLabeLetter(char x)
