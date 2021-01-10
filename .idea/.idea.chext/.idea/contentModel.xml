@@ -19,18 +19,7 @@
         <e p="mATH" t="Include">
           <e p="Int2.cs" t="Include" />
         </e>
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netcoreapp3.1" t="Include">
-              <e p="chess_proj.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Private" t="Include">
-          <e p="token.txt" t="Include" />
-        </e>
-        <e p="Program.cs" t="Include" />
-        <e p="Systems" t="Include">
+        <e p="Mechanics" t="Include">
           <e p="Board.cs" t="Include" />
           <e p="Game.cs" t="Include" />
           <e p="Move.cs" t="Include" />
@@ -46,6 +35,17 @@
           </e>
           <e p="Player.cs" t="Include" />
         </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="chess_proj.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Private" t="Include">
+          <e p="token.txt" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
       </e>
       <e p="chext.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

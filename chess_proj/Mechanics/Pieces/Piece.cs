@@ -32,5 +32,23 @@ namespace chess_proj.Mechanics.Pieces
             if (y < 0)                return false;
             return true;
         }
+        
+        protected void SearchStraight(Piece?[][] cells, List<Move> moves, Int2 initalPosition, Int2 increment)
+        {
+            Int2 index = initalPosition;
+            while (true)
+            {
+                index += increment;
+                if (!IsWithinBounds(index, cells))
+                    break;
+                if (cells[index.X][index.Y] != null)
+                {
+                    moves.Add(new Move(index, index - increment));
+                    break;
+                }
+                    
+                moves.Add(new Move(index, index - increment));
+            }
+        }
     }
 }

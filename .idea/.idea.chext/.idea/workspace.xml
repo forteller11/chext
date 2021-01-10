@@ -33,10 +33,8 @@
         <option value="$PROJECT_DIR$/chess_proj/Private/key.txt" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Player.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Rook.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Horse.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Private/token.txt" />
-        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Bishop.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/King.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Pawn.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Knight.cs" />
@@ -44,19 +42,21 @@
         <option value="$PROJECT_DIR$/chess_proj/Math/Move.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Move.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Grid.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Castle.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/MoveHelpers.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Common.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Controller/Parser.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Controller/Token.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Program.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Board.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Game.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Controller/Parser.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Castle.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Common.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Rook.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Bishop.cs" />
       </list>
     </option>
   </component>
@@ -100,7 +100,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="57867000" />
+      <workItem from="1610067480524" duration="59107000" />
     </task>
     <servers />
   </component>
@@ -117,22 +117,22 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state width="789" height="464" key="DebuggerActiveHint/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610153821503" />
-    <state width="2455" height="413" key="GridCell.Tab.0.bottom" timestamp="1610242403059">
+    <state width="2455" height="413" key="GridCell.Tab.0.bottom" timestamp="1610244822055">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.bottom/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610242403059" />
-    <state width="2455" height="413" key="GridCell.Tab.0.center" timestamp="1610242403059">
+    <state width="2455" height="413" key="GridCell.Tab.0.bottom/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610244822055" />
+    <state width="2455" height="413" key="GridCell.Tab.0.center" timestamp="1610244822055">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.center/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610242403059" />
-    <state width="2455" height="413" key="GridCell.Tab.0.left" timestamp="1610242403058">
+    <state width="2455" height="413" key="GridCell.Tab.0.center/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610244822055" />
+    <state width="2455" height="413" key="GridCell.Tab.0.left" timestamp="1610244822055">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.left/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610242403058" />
-    <state width="2455" height="413" key="GridCell.Tab.0.right" timestamp="1610242403059">
+    <state width="2455" height="413" key="GridCell.Tab.0.left/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610244822055" />
+    <state width="2455" height="413" key="GridCell.Tab.0.right" timestamp="1610244822055">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610242403059" />
+    <state width="2455" height="413" key="GridCell.Tab.0.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610244822055" />
     <state width="2455" height="535" key="GridCell.Tab.1.bottom" timestamp="1610242252953">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
@@ -205,39 +205,26 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state x="989" y="453" width="644" height="592" key="find.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610240697054" />
-    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup" timestamp="1610241673576">
+    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup" timestamp="1610244631866">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610241673576" />
+    <state x="974" y="325" width="672" height="678" key="search.everywhere.popup/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610244631866" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/chess_proj/Systems/Pieces/Castle.cs</url>
+          <url>file://$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Rook.cs</url>
           <line>21</line>
           <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Systems\Pieces\Castle.cs" initialLine="21">
             <startOffsets>
-              <option value="589" />
+              <option value="585" />
             </startOffsets>
             <endOffsets>
-              <option value="615" />
+              <option value="611" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/chess_proj/Common.cs</url>
-          <line>59</line>
-          <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Common.cs" initialLine="59">
-            <startOffsets>
-              <option value="1814" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1851" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/chess_proj/Common.cs</url>

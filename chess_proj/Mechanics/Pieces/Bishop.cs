@@ -9,7 +9,10 @@ namespace chess_proj.Mechanics.Pieces
 
         public override void RefreshValidMoves(Int2 piecePosition, Piece[][] cells, List<Move> moves)
         {
-            throw new System.NotImplementedException();
+            SearchStraight(cells, moves, piecePosition,new Int2(1,1));
+            SearchStraight(cells, moves, piecePosition,new Int2(-1,-1));
+            SearchStraight(cells, moves, piecePosition,new Int2(-1,1));
+            SearchStraight(cells, moves, piecePosition,new Int2(1,-1));
         }
     }
 }
