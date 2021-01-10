@@ -9,7 +9,16 @@ namespace chess_proj.Mechanics.Pieces
 
         public override void RefreshValidMoves(Int2 piecePosition, Piece[][] cells, List<Move> moves)
         {
-            throw new System.NotImplementedException();
+            //todo add all directions
+            AddMoveIfValid(cells, moves, piecePosition + new Int2(1, 2), piecePosition);
+            AddMoveIfValid(cells, moves, piecePosition + new Int2(-1, 2), piecePosition);
+            AddMoveIfValid(cells, moves, piecePosition + new Int2(1, -2), piecePosition);
+            AddMoveIfValid(cells, moves, piecePosition + new Int2(-1, -2), piecePosition);
+            
+            AddMoveIfValid(cells, moves, piecePosition + new Int2(2, 1), piecePosition);
+            AddMoveIfValid(cells, moves, piecePosition + new Int2(-2, 1), piecePosition);
+            AddMoveIfValid(cells, moves, piecePosition + new Int2(2, -1), piecePosition);
+            AddMoveIfValid(cells, moves, piecePosition + new Int2(-2, -1), piecePosition);
         }
     }
 }
