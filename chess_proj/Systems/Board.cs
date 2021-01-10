@@ -8,14 +8,14 @@ namespace chess_proj.Mechanics
 {
     public class Board
     {
-        public readonly int Dimensions;
+        public readonly int Dimensions = 8;
         public readonly Piece?[][] Cells;
-        private readonly List<Move> ValidMoves;
+        private readonly List<Move> _validMoves;
         
         
-        public Board(int cellCount)
+        public Board()
         {
-            Dimensions = cellCount;
+            _validMoves = new List<Move>();
             Cells = new Piece[Dimensions][];
             for (int i = 0; i < Cells.Length; i++)
                 Cells[i] = new Piece[Dimensions];
@@ -27,13 +27,15 @@ namespace chess_proj.Mechanics
 
         public List<Move> GetMoves(Int2 position)
         {
-            ValidMoves.Clear();
+            _validMoves.Clear();
+
+            Program.DebugLog(position);
             var piece = GetCell(position);
             if (piece == null)
-                return ValidMoves;
+                return _validMoves;
             
-            piece.RefreshValidMoves(position, Cells, ValidMoves);
-            return ValidMoves;
+            piece.RefreshValidMoves(position, Cells, _validMoves);
+            return _validMoves;
         }
         
         public void MovePiece(Player actor, Int2 from, Int2 target)
@@ -54,12 +56,12 @@ namespace chess_proj.Mechanics
             }
 
             //is target in list of valid moves
-            ValidMoves.Clear();
-            piece.RefreshValidMoves(from, Cells, ValidMoves);
+            _validMoves.Clear();
+            piece.RefreshValidMoves(from, Cells, _validMoves);
             bool validMovesContainsTarget = false;
-            for (int i = 0; i < ValidMoves.Count; i++)
+            for (int i = 0; i < _validMoves.Count; i++)
             {
-                if (ValidMoves[i].Pos == target)
+                if (_validMoves[i].Pos == target)
                 {
                     validMovesContainsTarget = true;
                     break;

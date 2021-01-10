@@ -1,4 +1,5 @@
 ﻿using System;
+using chess_proj.Math;
 
 namespace chess_proj
 {
@@ -34,6 +35,40 @@ namespace chess_proj
                 case 'h': return 7;
                 default: throw new ArgumentException($"index was {x} but must be between a-h!");
             }
+        }
+
+        public static int ParseCharToInt(char x)
+        {
+            switch (x)
+            {
+                case '0': return 0;
+                case '1': return 1;
+                case '2': return 2;
+                case '3': return 3;
+                case '4': return 4;
+                case '5': return 5;
+                case '6': return 6;
+                case '7': return 7;
+                case '8': return 8;
+                case '9': return 9;
+                default: throw new ArgumentException($"char must be number but was {x}!");
+            }
+        }
+        
+        public static Int2 FromLabelToIndexCoordinate(string coordinate, int boardDimensions)
+        {
+            int x = LetterToIndex(coordinate[0]);
+            int y = ParseCharToInt(coordinate[1]) -1;
+            
+            return new Int2(x,y);
+        }
+        
+        public static string ToLabelCoordinate(Int2 pos, int boardDimensions)
+        {
+            var x = Common.IndexToLetter(pos.X);
+            var y   = boardDimensions - pos.Y; 
+            
+            return x + y;
         }
     }
 }

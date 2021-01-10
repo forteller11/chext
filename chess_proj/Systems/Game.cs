@@ -39,23 +39,23 @@ namespace chess_proj.Mechanics
 
         private async Task OnReady()
         {
-            Console.WriteLine(_client.Guilds.Count);
+            Program.DebugLog(_client.Guilds.Count);
             foreach (var guild in _client.Guilds)
             {
                 #region find or create _chessChannel in guilds
                 #region find server named chex
                 bool hasChessChannel = false;
-                Console.WriteLine("guild");
-                Console.WriteLine(guild.Name);
+                Program.DebugLog("guild");
+                Program.DebugLog(guild.Name);
                 foreach (var channel in guild.TextChannels)
                 {
-                    Console.WriteLine("channel");
-                    Console.WriteLine($"{channel.Name} == {CHEX_CHANNEL_NAME}");
+                    Program.DebugLog("channel");
+                    Program.DebugLog($"{channel.Name} == {CHEX_CHANNEL_NAME}");
                     if (channel.Name == CHEX_CHANNEL_NAME)
                     {
                         hasChessChannel = true;
                         _chessChannel = channel;
-                        Console.WriteLine("FOUND CHEX CHANNEL");
+                        Program.DebugLog("FOUND CHEX CHANNEL");
                         break;
                     }
 
@@ -72,14 +72,14 @@ namespace chess_proj.Mechanics
                         properties.Position = 0;
                     });
                     
-                    Console.WriteLine("CREATED TEXT CHANNEL");
+                    Program.DebugLog("CREATED TEXT CHANNEL");
                     
                     foreach (var channel in guild.TextChannels)
                     {
                         if (channel.Name == CHEX_CHANNEL_NAME)
                         {
                             _chessChannel = channel;
-                            Console.WriteLine("FOUND NEWLY CREATED CHEX CHANNEL");
+                            Program.DebugLog("FOUND NEWLY CREATED CHEX CHANNEL");
                             break;
                         }
 
@@ -90,7 +90,7 @@ namespace chess_proj.Mechanics
                 
                 #endregion
                 
-                _board = new Board(8);
+                _board = new Board();
                 SetupStandard(_board);
                 
                 _renderer = new Renderer(_chessChannel!, _board);
@@ -111,7 +111,7 @@ namespace chess_proj.Mechanics
             
             void SetupPawnRow(int rowIndex, Player player)
             {
-                for (int i = 0; i < board.Dimensions; i++)
+                for (int i = 0; i < _board.Dimensions; i++)
                     board.SetCell(rowIndex, i, new Pawn(player));
             }
             void SetupRowNonPawns(int rowIndex, Player player)
@@ -132,13 +132,14 @@ namespace chess_proj.Mechanics
 
         private Task OnMessageReceived(SocketMessage arg)
         {
-            Console.WriteLine("msg received");
-            _parser.Parse(arg.Content);
+            Program.DebugLog("msg received");
             if (arg.Author.Id == _client.CurrentUser.Id)
             {
-                Console.WriteLine("chex sent/received msg"); return Task.CompletedTask;
+                Program.DebugLog("chex sent/received msg");
+                return Task.CompletedTask;
             }
             
+            _parser.Parse(arg.Content, _board.Dimensions);
             return Task.CompletedTask;
         }
 

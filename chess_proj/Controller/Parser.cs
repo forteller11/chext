@@ -12,7 +12,7 @@ namespace chess_proj.Controller
 
         private List<Token> _tokens = new List<Token>(20);
 
-        public void Parse(string input)
+        public void Parse(string input, int boardDimensions)
         {
             _tokens.Clear();
             string[] tokenStrings = input.Split(" ");
@@ -26,7 +26,7 @@ namespace chess_proj.Controller
                     if (ContainsLabeLetter(tokenString[0]) && ContainsLabeNumber(tokenString[1]))
                     {
                         _tokens.Add(new Token(tokenString, Token.TokenType.CellCoord));
-                        Console.WriteLine($"Token Created: {tokenString}");
+                        Program.DebugLog($"Token Created: {tokenString}");
                         continue;
                     }
                     
@@ -40,8 +40,7 @@ namespace chess_proj.Controller
             {
                 if (_tokens[0].Type == Token.TokenType.CellCoord)
                 {
-                    Console.WriteLine("displaymoves");
-                    DisplayMoves?.Invoke(Int2.FromChessCoordinate(_tokens[0].Value));
+                    DisplayMoves?.Invoke(Common.FromLabelToIndexCoordinate(_tokens[0].Value, boardDimensions));
                 }
             }
 
@@ -49,7 +48,9 @@ namespace chess_proj.Controller
             {
                 if (_tokens[0].Type == Token.TokenType.CellCoord && _tokens[1].Type == Token.TokenType.CellCoord)
                 {
-                    MoveAttempt?.Invoke(Int2.FromChessCoordinate(_tokens[0].Value), Int2.FromChessCoordinate(_tokens[1].Value));
+                    var coordFrom = Common.FromLabelToIndexCoordinate(_tokens[0].Value, boardDimensions);
+                    var coordTo = Common.FromLabelToIndexCoordinate(_tokens[1].Value, boardDimensions);
+                    MoveAttempt?.Invoke(coordFrom, coordTo);
                 }
             }
             #endregion

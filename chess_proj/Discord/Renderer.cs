@@ -43,15 +43,16 @@ namespace chess_proj.Discord
         public void DisplayMoves(Int2 position)
         {
             ClearEffects();
-            Console.WriteLine("Display moves effects");
-            var moves =_board.GetMoves(position);
+            Effects[position.X][position.Y] = 'X';
+            
+            var moves = _board.GetMoves(position);
             for (int i = 0; i < moves.Count; i++)
             {
                 var p = moves[i].Pos;
                 Effects[p.X][p.Y] = '.';
             }
 
-            Console.WriteLine("Display moves end");
+            Program.DebugLog("Display moves end");
         }
 
         public void ClearEffects()
@@ -65,12 +66,12 @@ namespace chess_proj.Discord
         }
         public async Task Redraw()
         {
-            Console.WriteLine("Redraw");
+            Program.DebugLog("Redraw");
             //if you haven't drawn first message yet
          
             if (EmbedMessage == null)
             {
-                Console.WriteLine("hasn't started first message");
+                Program.DebugLog("hasn't started first message");
                 EmbedMessage = await Channel.SendMessageAsync(null, false, _embedBuilder.Build());
             }
 
@@ -142,13 +143,13 @@ namespace chess_proj.Discord
             _embedBuilder.Description = _stringBuilder.ToString();
             
             
-            Console.WriteLine("before modify async");
+            Program.DebugLog("before modify async");
             EmbedMessage.ModifyAsync(properties =>
             {
                 properties.Embed = _embedBuilder.Build();
             }, null);
             
-            Console.WriteLine("after modify async");
+            Program.DebugLog("after modify async");
 
             void LetterRow()
             {

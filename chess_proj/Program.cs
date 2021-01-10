@@ -20,7 +20,10 @@ namespace chess_proj
         public async Task MainAsync()
         {
             _client = new DiscordSocketClient();
+            _client.Log += Log;
+            
             _game = new Mechanics.Game(_client);
+            
 
             var token = File.ReadAllText(_projectPath + @"Private\token.txt");
             await _client.LoginAsync(TokenType.Bot, token);
@@ -31,12 +34,12 @@ namespace chess_proj
         
         
         #region debug
-        public Task Log(LogMessage msg)
+        public static Task Log(LogMessage msg)
         {
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
-        public Task DebugLog(object message, string src="Debug")
+        public static Task DebugLog(object message, string src="Debug")
         {
             Log(new LogMessage(LogSeverity.Debug, src, message.ToString()));
             return Task.CompletedTask;
