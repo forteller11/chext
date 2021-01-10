@@ -39,16 +39,32 @@ namespace chess_proj.Mechanics.Pieces
             while (true)
             {
                 index += increment;
-                if (!IsWithinBounds(index, cells))
+                if (!AddMoveIfValid(cells, moves, index, index - increment))
                     break;
-                if (cells[index.X][index.Y] != null)
-                {
-                    moves.Add(new Move(index, index - increment));
-                    break;
-                }
-                    
-                moves.Add(new Move(index, index - increment));
             }
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>
+        /// has hit piece or is out of bounds == false, if hit empty square == true
+        /// </returns>
+        protected bool AddMoveIfValid(Piece?[][] cells, List<Move> moves, Int2 target, Int2 initialPosition)
+        {
+            if (!IsWithinBounds(target, cells))
+                return false;
+
+            if (cells[target.X][target.Y] != null)
+            {
+                moves.Add(new Move(target, initialPosition));
+                return false;
+            }
+
+            moves.Add(new Move(target, initialPosition));
+            return true;
+        }
+        
+        
     }
 }
