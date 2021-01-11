@@ -8,6 +8,8 @@ namespace chext.Discord.Parsing
     {
         public event Action<ISocketMessageChannel> GameProposalHandler; 
         public event Action<SocketUser, ISocketMessageChannel> JoinHandler; 
+        /// <summary> user, channel, isWhite  </summary>
+        public event Action<SocketUser, ISocketMessageChannel, bool> JoinSideHandler; 
         
         private List<PreGameToken> _tokens = new List<PreGameToken>(20);
         
@@ -27,6 +29,7 @@ namespace chext.Discord.Parsing
                 if (tokenString == "join") _tokens.Add(new PreGameToken(tokenString, PreGameToken.TokenType.Join));
                 if (tokenString == "create") _tokens.Add(new PreGameToken(tokenString, PreGameToken.TokenType.Create));
                 if (tokenString == "chext") _tokens.Add(new PreGameToken(tokenString, PreGameToken.TokenType.Chext));
+                if (tokenString == "white" || tokenString == "black") _tokens.Add(new PreGameToken(tokenString, PreGameToken.TokenType.Side));
                
             }
             #endregion
@@ -44,7 +47,10 @@ namespace chext.Discord.Parsing
 
                 if (_tokens[0].Type == PreGameToken.TokenType.Create && _tokens[1].Type == PreGameToken.TokenType.Chext)
                     GameProposalHandler?.Invoke(message.Channel);
-                    
+
+                if (_tokens[0].Type == PreGameToken.TokenType.Join && _tokens[1].Type == PreGameToken.TokenType.Side)
+                    JoinSideHandler?.Invoke(message.Author, message.Channel, _tokens[1].Value == "white");
+                
             }
             #endregion
         }

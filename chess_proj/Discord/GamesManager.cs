@@ -1,5 +1,7 @@
 ﻿
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Threading.Tasks;
 using chext.Discord.Parsing;
 using chext.Mechanics;
@@ -19,8 +21,18 @@ namespace chext.Discord
         
         class GameProposal
         {
-            public SocketUser? BlackPlayer;
-            public SocketUser? WhitePlayer;
+            public SocketUser? BlackSide;
+            public SocketUser? WhiteSide;
+
+            public SocketUser? GetSide(bool isWhite) => isWhite ? WhiteSide : BlackSide;
+            public void SetSide (bool isWhite, SocketUser user)
+            {
+                if (isWhite) WhiteSide = user;
+                else BlackSide = user;
+            }
+
+            public bool BothSidesNotNull() => WhiteSide != null && BlackSide != null;
+
         }
         private Dictionary<ulong, GameProposal> _proposals = new Dictionary<ulong, GameProposal>();
 
@@ -36,6 +48,7 @@ namespace chext.Discord
             _parser = new PreGameParser();
             _parser.GameProposalHandler += OnGameProposalProposal;
             _parser.JoinHandler += OnJoin;
+            _parser.JoinSideHandler += OnJoinSide;
             
             _client.MessageReceived += OnMessageReceived;
         }
@@ -72,30 +85,50 @@ namespace chext.Discord
 
         private void OnJoin(SocketUser user, ISocketMessageChannel channel)
         {
-            var channelId = channel.Id;
+            Program.DebugLog("on Join");
+            if (!ProposalExists(channel.Id)) //if there is already an active proposal
+                return;
+            var proposal = _proposals[channel.Id];
+            if (proposal.WhiteSide == null)
+                OnJoinSide(user, channel, true);
+            else if (proposal.BlackSide == null)
+                OnJoinSide(user, channel, false);
+            else throw new AggregateException("not deleting proposals correctly after game has already started?");
+        }
+        
+        private void OnJoinSide(SocketUser user, ISocketMessageChannel channel, bool isWhite)
+        {
+            Program.DebugLog("on join side");
 
-            if (_proposals.ContainsKey(channelId)) //if there is already an active proposal
+            if (!ProposalExists(channel.Id)) //if there is already an active proposal
+                return;
+
+            var proposal = _proposals[channel.Id];
+            var desiredSide = proposal.GetSide(isWhite);
+            
+            if (desiredSide == null)
             {
-                var proposal = _proposals[channelId];
-                if (proposal.WhitePlayer == null)
-                {
-                    proposal.WhitePlayer = user;
-                    Program.DebugLog($"{user.Username} joined white side!");
-                }
-                else
-                {
-                    proposal.BlackPlayer = user;
-                    Program.DebugLog($"{user.Username} joined black side!");
-                }
-
-                if (proposal.BlackPlayer != null && proposal.BlackPlayer != null)
-                {
-                    Program.DebugLog($"new game created!");
-                    var game = new Game(channel, proposal.WhitePlayer, proposal.BlackPlayer);
-                    game.SetupAndRender();
-                    _games.Add(channelId, game);
-                }
+                Program.DebugLog($"{user.Username} joined {(isWhite ? "white" : "black")} side!");
+                proposal.SetSide(isWhite, user);
             }
+
+            if (proposal.BothSidesNotNull())
+            {
+                Program.DebugLog($"new game created!");
+                var game = new Game(channel, proposal!.WhiteSide, proposal!.BlackSide);
+                game.SetupAndRender();
+                _games.Add(channel.Id, game);
+            }
+
+        }
+
+        private bool ProposalExists(ulong channelId)
+        {
+            if (_proposals.ContainsKey(channelId)) //if there is already an active proposal
+                return true;
+            
+            Program.DebugLog("Can't join game when no active games exist in current channel!");
+            return false;
         }
 
 

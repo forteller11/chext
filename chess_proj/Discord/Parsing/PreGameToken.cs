@@ -9,6 +9,7 @@
             Join,
             Create,
             Chext,
+            Side
         }
         
         public PreGameToken(string value, TokenType type)
