@@ -48,6 +48,12 @@ namespace chext
             Log(new LogMessage(LogSeverity.Debug, src, message.ToString()));
             return Task.CompletedTask;
         }
+        
+        public static Task WarningLog(object message, string src="Warning")
+        {
+            Log(new LogMessage(LogSeverity.Debug, src, message.ToString()));
+            return Task.CompletedTask;
+        }
         #endregion
     }
 }

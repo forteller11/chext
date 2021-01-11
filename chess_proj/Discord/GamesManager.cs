@@ -55,12 +55,20 @@ namespace chext.Discord
 
         public void OnGameProposalProposal(ISocketMessageChannel channel)
         {
-            Program.DebugLog($"New Game Proposal at {channel.Name}");
-            
-            if (!_proposals.ContainsKey(channel.Id))
+            if (_proposals.ContainsKey(channel.Id) )
             {
-                _proposals.Add(channel.Id, new GameProposal());
+                Program.WarningLog("Cannot create proposal when one already exists in same channel!");
+                return;
             }
+
+            if (_games.ContainsKey(channel.Id))
+            {
+                Program.WarningLog("Cannot create proposal when an active game already exists in same channel!");
+                return;
+            }
+            
+            Program.DebugLog($"New Game Proposal at {channel.Name}");
+            _proposals.Add(channel.Id, new GameProposal());
         }
 
         public Task OnMessageReceived(SocketMessage message)
@@ -88,6 +96,7 @@ namespace chext.Discord
             Program.DebugLog("on Join");
             if (!ProposalExists(channel.Id)) //if there is already an active proposal
                 return;
+            
             var proposal = _proposals[channel.Id];
             if (proposal.WhiteSide == null)
                 OnJoinSide(user, channel, true);
@@ -118,6 +127,7 @@ namespace chext.Discord
                 var game = new Game(channel, proposal!.WhiteSide, proposal!.BlackSide);
                 game.SetupAndRender();
                 _games.Add(channel.Id, game);
+                _proposals.Remove(channel.Id);
             }
 
         }
@@ -127,7 +137,7 @@ namespace chext.Discord
             if (_proposals.ContainsKey(channelId)) //if there is already an active proposal
                 return true;
             
-            Program.DebugLog("Can't join game when no active games exist in current channel!");
+            Program.WarningLog("Can't join game when no active games exist in current channel!");
             return false;
         }
 
