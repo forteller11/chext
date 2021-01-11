@@ -21,9 +21,6 @@ namespace chext.Mechanics
                 Cells[i] = new Piece[Dimensions];
             
         }
-        
-        
-
 
         public List<Move> GetMoves(Int2 position)
         {
@@ -44,14 +41,14 @@ namespace chext.Mechanics
 
             if (piece == null)
             {
-                Console.WriteLine($"no piece at {from}");
+                Program.WarningLog($"no piece at {from}");
                 return;
             }
             
             //make sure piece is owned by actor
             if (piece.IsWhite != actor.IsWhite)
             {
-                Console.WriteLine($"{piece.Name} not owned by actor");
+                Program.WarningLog($"{piece.Name} not owned by actor");
                 return;
             }
 
@@ -69,7 +66,7 @@ namespace chext.Mechanics
             }
             if (!validMovesContainsTarget)
             {
-                Console.WriteLine($"Cannot move {piece.Name} to {target}");
+                Program.WarningLog($"Cannot move {piece.Name} to {target}");
                 return;
             }
 

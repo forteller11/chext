@@ -6,7 +6,8 @@ namespace chext.Discord.Parsing
 {
     public class PreGameParser
     {
-        public event Action<ISocketMessageChannel> GameProposalHandler; 
+        /// <summary> channel created on, creator</summary>
+        public event Action<ISocketMessageChannel, SocketUser> GameProposalHandler; 
         public event Action<SocketUser, ISocketMessageChannel> JoinHandler; 
         /// <summary> user, channel, isWhite  </summary>
         public event Action<SocketUser, ISocketMessageChannel, bool> JoinSideHandler; 
@@ -46,7 +47,7 @@ namespace chext.Discord.Parsing
             {
 
                 if (_tokens[0].Type == PreGameToken.TokenType.Create && _tokens[1].Type == PreGameToken.TokenType.Chext)
-                    GameProposalHandler?.Invoke(message.Channel);
+                    GameProposalHandler?.Invoke(message.Channel, message.Author);
 
                 if (_tokens[0].Type == PreGameToken.TokenType.Join && _tokens[1].Type == PreGameToken.TokenType.Side)
                     JoinSideHandler?.Invoke(message.Author, message.Channel, _tokens[1].Value == "white");

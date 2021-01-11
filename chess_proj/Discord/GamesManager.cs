@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Threading.Tasks;
 using chext.Discord.Parsing;
-using chext.Mechanics;
+using Discord;
 using Discord.WebSocket;
+using Game = chext.Mechanics.Game;
 
 #nullable enable
 
@@ -19,11 +20,18 @@ namespace chext.Discord
         
         private Dictionary<ulong, Game> _games = new Dictionary<ulong, Game>();
         
-        class GameProposal
+        public class GameProposal
         {
+            public SocketUser Creator;
             public SocketUser? BlackSide;
             public SocketUser? WhiteSide;
+            public EmbedBuilder EmbedBuilder;
 
+            public GameProposal(SocketUser creator)
+            {
+                Creator = creator;
+                EmbedBuilder = new EmbedBuilder();
+            }
             public SocketUser? GetSide(bool isWhite) => isWhite ? WhiteSide : BlackSide;
             public void SetSide (bool isWhite, SocketUser user)
             {
@@ -53,23 +61,7 @@ namespace chext.Discord
             _client.MessageReceived += OnMessageReceived;
         }
 
-        public void OnGameProposalProposal(ISocketMessageChannel channel)
-        {
-            if (_proposals.ContainsKey(channel.Id) )
-            {
-                Program.WarningLog("Cannot create proposal when one already exists in same channel!");
-                return;
-            }
-
-            if (_games.ContainsKey(channel.Id))
-            {
-                Program.WarningLog("Cannot create proposal when an active game already exists in same channel!");
-                return;
-            }
-            
-            Program.DebugLog($"New Game Proposal at {channel.Name}");
-            _proposals.Add(channel.Id, new GameProposal());
-        }
+        
 
         public Task OnMessageReceived(SocketMessage message)
         {
@@ -90,7 +82,27 @@ namespace chext.Discord
             
             return Task.CompletedTask;
         }
+        public void OnGameProposalProposal(ISocketMessageChannel channel, SocketUser creator)
+        {
+            if (_proposals.ContainsKey(channel.Id) )
+            {
+                Program.WarningLog("Cannot create proposal when one already exists in same channel!");
+                return;
+            }
+        
+            if (_games.ContainsKey(channel.Id))
+            {
+                Program.WarningLog("Cannot create proposal when an active game already exists in same channel!");
+                return;
+            }
+            
+            Program.DebugLog($"New Game Proposal at {channel.Name}");
+            var newProposal = new GameProposal(creator);
+            _proposals.Add(channel.Id, new GameProposal(creator));
+            GameManagerRenderer.DrawProposal(newProposal, channel);
+        }
 
+        #region joins
         private void OnJoin(SocketUser user, ISocketMessageChannel channel)
         {
             Program.DebugLog("on Join");
@@ -119,6 +131,7 @@ namespace chext.Discord
             {
                 Program.DebugLog($"{user.Username} joined {(isWhite ? "white" : "black")} side!");
                 proposal.SetSide(isWhite, user);
+                GameManagerRenderer.DrawProposal(proposal, channel);
             }
 
             if (proposal.BothSidesNotNull())
@@ -140,9 +153,7 @@ namespace chext.Discord
             Program.WarningLog("Can't join game when no active games exist in current channel!");
             return false;
         }
-
-
-
-        //responsible for creating new games, passing in parser, and joining platers, starting games
+        #endregion
+        
     }
 }

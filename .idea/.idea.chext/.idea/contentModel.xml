@@ -11,6 +11,7 @@
         <e p="Common.cs" t="Include" />
         <e p="Controller" t="Include" />
         <e p="Discord" t="Include">
+          <e p="GameManagerRenderer.cs" t="Include" />
           <e p="GamesManager.cs" t="Include" />
           <e p="Parsing" t="Include">
             <e p="InGameParser.cs" t="Include" />
