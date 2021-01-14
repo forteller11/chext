@@ -10,7 +10,7 @@ namespace chext.Discord
         public SocketUser Creator;
         public SocketUser? BlackSide;
         public SocketUser? WhiteSide;
-        public EmbededDrawer Drawer;
+        public EmbededDrawer Drawer; //todo, remove this if unused
 
         public GameProposal(SocketUser creator, ISocketMessageChannel channel, EmbededDrawer drawer)
         {

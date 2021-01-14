@@ -35,7 +35,7 @@ namespace chext.Mechanics
             _inGameParser.MoveHandler    += OnMove;
 
             _board = new Board();
-            _renderer = new Renderer(_board, proposal.Drawer);
+            _renderer = new Renderer(_board, new EmbededDrawer(proposal.Channel));
         }
 
         public void SetupAndRender()
@@ -92,16 +92,45 @@ namespace chext.Mechanics
         
         private void OnMove(Int2 from, Int2 to, SocketUser author)
         {
-            Program.DebugLog("move attempt");
-            
-            if (author.Id == White.Id)
-                _board.MovePiece(White, Black, from, to);
-            else if (author.Id == Black.Id)
-                _board.MovePiece(Black, White, from, to);
-            else //author wasn't part of the game... don't do anything
-                return;
+            Program.DebugLog("on move");
+            if (GetPlayerFromIdPreferEnfrachaisedPlayer(author, _board.IsWhitesTurn, out var player))
+            {
+                _board.MovePiece(player!, from, to);
+            }
+            else 
+            {
+                Program.WarningLog($"{author.Username} is trying to move {Common.ToLabelCoordinate(from, _board.Dimensions)} but cannot as they are not the in-turn player in current game!");
+            }
+
+            _board.IsWhitesTurn = !_board.IsWhitesTurn;
             
             _renderer.DrawBoard();
+            
+        }
+        
+        //gets black or white player if they match socketuser id, if both black and white are same player, prefers returning the player who's turn it currently is
+        bool GetPlayerFromIdPreferEnfrachaisedPlayer(SocketUser user, bool isWhitesTurn, out Player? player)
+        {
+            if (user.Id == White.Id && user.Id == Black.Id)
+            {
+                player = isWhitesTurn ? White : Black;
+                return true;
+            }
+            
+            if (user.Id == White.Id)
+            {
+                player = White;
+                return true;
+            }
+
+            if (user.Id == Black.Id)
+            {
+                player = Black;
+                return true;
+            }
+
+            player = null;
+            return false;
         }
     }
 }

@@ -15,7 +15,6 @@ namespace chext.Mechanics.Pieces
         //public string EmoteName => "\\:__" + Name + "__:";
        // public string EmoteName => "<:__rook__:797330289474142239>";
 
-       //todo piece shouldn't know owner
        public Piece(bool isWhite, char type)
         {
             IsWhite = isWhite;

@@ -11,8 +11,12 @@ namespace chext.Mechanics
         public readonly int Dimensions = 8;
         public readonly Piece?[][] Cells;
         private readonly List<Move> _validMoves;
-        
-        
+        public bool IsWhitesTurn = true;
+
+        public List<Piece> CapturedWhite = new List<Piece>();
+        public List<Piece> CapturedBlack = new List<Piece>();
+
+
         public Board()
         {
             _validMoves = new List<Move>();
@@ -35,8 +39,14 @@ namespace chext.Mechanics
             return _validMoves;
         }
         
-        public void MovePiece(Player actor, Player opponent, Int2 from, Int2 target)
+        public void MovePiece(Player actor, Int2 from, Int2 target)
         {
+            if (actor.IsWhite != IsWhitesTurn)
+            {
+                Program.WarningLog($"Is not {actor.Username}'s turn to move!");
+                return;
+            }
+            
             var piece = GetCell(from);
 
             if (piece == null)
@@ -74,7 +84,11 @@ namespace chext.Mechanics
             if (GetCell(target) != null)
             {
                 var takenPiece = GetCell(target);
-                opponent.Captured.Add(takenPiece);
+                if (IsWhitesTurn)
+                    CapturedBlack.Add(takenPiece!);
+                else 
+                    CapturedWhite.Add(takenPiece!);
+                
                 Cells[target.X][target.Y] = null;
             }
             
