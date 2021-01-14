@@ -24,24 +24,24 @@ namespace chext.Mechanics
         
         private static string CHEX_CHANNEL_NAME = "__chex__";
 
-        public Game(ISocketMessageChannel channel, SocketUser whitePlayerId, SocketUser blackPlayerId)
+        public Game(GameProposal proposal)
         {
-            Channel = channel;
-            Black = new Player(blackPlayerId, false);
-            White = new Player(whitePlayerId, true);
+            Channel = proposal.Channel;
+            Black = new Player(proposal!.BlackSide, false);
+            White = new Player(proposal!.WhiteSide, true);
             
             _inGameParser = new InGameParser();
             _inGameParser.DisplayHandler += OnDisplayMoves;
             _inGameParser.MoveHandler    += OnMove;
 
             _board = new Board();
-            _renderer = new Renderer(Channel!, _board);
+            _renderer = new Renderer(_board, proposal.Drawer);
         }
 
-        public async void SetupAndRender()
+        public void SetupAndRender()
         {
             SetupStandard(_board);
-            await _renderer.DrawBoard();
+            _renderer.DrawBoard();
         }
         
         

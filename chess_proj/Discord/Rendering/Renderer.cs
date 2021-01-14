@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using chext.Math;
@@ -12,32 +13,28 @@ namespace chext.Discord
 {
     public class Renderer
     {
-        private EmbedBuilder _embedBuilder;
-        public ISocketMessageChannel Channel;
-        public RestUserMessage? EmbedMessage;
+        private EmbededDrawer Drawer;
         public Board _board;
         public char[][] Effects; //over top chess board for visual effects
-        //todo seperate visual from systems
-        
+
         private StringBuilder _stringBuilder;
         const int BOARD_BORDER_WIDTH = 4; //IN SPACES
         const int CELL_WIDTH = 4; //IN SPACES
         
 
-        public Renderer(ISocketMessageChannel channel, Board board)
+        public Renderer(Board board, EmbededDrawer drawer)
         {
-            Channel = channel;
             _board = board;
-
+            Drawer = drawer;
+            
             Effects = new char[_board.Dimensions][];
             ClearEffects();
             
             _stringBuilder = new StringBuilder(_board.Dimensions * _board.Dimensions * 6);
             _stringBuilder.Append('#', _stringBuilder.Capacity);
             
-            _embedBuilder = new EmbedBuilder();
-            _embedBuilder.Color = Color.Gold;
-            _embedBuilder.Title = "Chex";
+            Drawer.Builder.Color = Color.Gold;
+            Drawer.Builder.Title = "Chext";
         }
 
         public void DisplayMoves(Int2 position)
@@ -67,14 +64,7 @@ namespace chext.Discord
         public async Task DrawBoard()
         {
             Program.DebugLog("Redraw");
-            //if you haven't drawn first message yet
-         
-            if (EmbedMessage == null)
-            {
-                Program.DebugLog("hasn't started first message");
-                EmbedMessage = await Channel.SendMessageAsync(null, false, _embedBuilder.Build());
-            }
-
+            
             _stringBuilder.Clear();
             _stringBuilder.Append("```"); //code block start
 
@@ -136,20 +126,9 @@ namespace chext.Discord
 
             _stringBuilder.Append("```"); //code block end
             
+            Drawer.Builder.Description = _stringBuilder.ToString();
             
-            
-            _embedBuilder.Fields.Clear();
-            //_embedBuilder.AddField("Chex", _stringBuilder.ToString(), true);
-            _embedBuilder.Description = _stringBuilder.ToString();
-            
-            
-            Program.DebugLog("before modify async");
-            EmbedMessage.ModifyAsync(properties =>
-            {
-                properties.Embed = _embedBuilder.Build();
-            }, null);
-            
-            Program.DebugLog("after modify async");
+            await Drawer.Draw();
 
             void LetterRow()
             {
@@ -159,8 +138,6 @@ namespace chext.Discord
                     _stringBuilder.Append($"  {Common.IndexToLetter(i)} ");
                 }
             }
-
-            
         }
         
  

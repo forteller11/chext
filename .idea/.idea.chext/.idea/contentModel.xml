@@ -11,15 +11,20 @@
         <e p="Common.cs" t="Include" />
         <e p="Controller" t="Include" />
         <e p="Discord" t="Include">
-          <e p="GameManagerRenderer.cs" t="Include" />
+          <e p="GameProposal.cs" t="Include" />
           <e p="GamesManager.cs" t="Include" />
           <e p="Parsing" t="Include">
+            <e p="Events.cs" t="Include" />
             <e p="InGameParser.cs" t="Include" />
             <e p="InGameToken.cs" t="Include" />
             <e p="PreGameParser.cs" t="Include" />
             <e p="PreGameToken.cs" t="Include" />
           </e>
-          <e p="Renderer.cs" t="Include" />
+          <e p="Rendering" t="Include">
+            <e p="EmbededDrawer.cs" t="Include" />
+            <e p="GameManagerRenderer.cs" t="Include" />
+            <e p="Renderer.cs" t="Include" />
+          </e>
         </e>
         <e p="mATH" t="Include">
           <e p="Int2.cs" t="Include" />

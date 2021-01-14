@@ -19,29 +19,7 @@ namespace chext.Discord
         private DiscordSocketClient _client;
         
         private Dictionary<ulong, Game> _games = new Dictionary<ulong, Game>();
-        
-        public class GameProposal
-        {
-            public SocketUser Creator;
-            public SocketUser? BlackSide;
-            public SocketUser? WhiteSide;
-            public EmbedBuilder EmbedBuilder;
 
-            public GameProposal(SocketUser creator)
-            {
-                Creator = creator;
-                EmbedBuilder = new EmbedBuilder();
-            }
-            public SocketUser? GetSide(bool isWhite) => isWhite ? WhiteSide : BlackSide;
-            public void SetSide (bool isWhite, SocketUser user)
-            {
-                if (isWhite) WhiteSide = user;
-                else BlackSide = user;
-            }
-
-            public bool BothSidesNotNull() => WhiteSide != null && BlackSide != null;
-
-        }
         private Dictionary<ulong, GameProposal> _proposals = new Dictionary<ulong, GameProposal>();
 
         /// <summary>
@@ -97,50 +75,50 @@ namespace chext.Discord
             }
             
             Program.DebugLog($"New Game Proposal at {channel.Name}");
-            var newProposal = new GameProposal(creator);
-            _proposals.Add(channel.Id, new GameProposal(creator));
-            GameManagerRenderer.DrawProposal(newProposal, channel);
+            var newProposal = new GameProposal(creator, channel, new EmbededDrawer(channel));
+            _proposals.Add(channel.Id, newProposal);
+            GameManagerRenderer.DrawProposal(newProposal);
         }
 
         #region joins
-        private void OnJoin(SocketUser user, ISocketMessageChannel channel)
+        private void OnJoin(JoinEvent e)
         {
             Program.DebugLog("on Join");
-            if (!ProposalExists(channel.Id)) //if there is already an active proposal
+            if (!ProposalExists(e.PostedChannel.Id)) //if there is already an active proposal
                 return;
             
-            var proposal = _proposals[channel.Id];
+            var proposal = _proposals[e.PostedChannel.Id];
             if (proposal.WhiteSide == null)
-                OnJoinSide(user, channel, true);
+                OnJoinSide(e.ToJoinSideEvent(true));
             else if (proposal.BlackSide == null)
-                OnJoinSide(user, channel, false);
+                OnJoinSide(e.ToJoinSideEvent(false));
             else throw new AggregateException("not deleting proposals correctly after game has already started?");
         }
         
-        private void OnJoinSide(SocketUser user, ISocketMessageChannel channel, bool isWhite)
+        private void OnJoinSide(JoinSideEvent e)
         {
             Program.DebugLog("on join side");
 
-            if (!ProposalExists(channel.Id)) //if there is already an active proposal
+            if (!ProposalExists(e.PostedChannel.Id)) //if there is already an active proposal
                 return;
 
-            var proposal = _proposals[channel.Id];
-            var desiredSide = proposal.GetSide(isWhite);
+            var proposal = _proposals[e.PostedChannel.Id];
+            var desiredSide = proposal.GetSide(e.IsWhite);
             
             if (desiredSide == null)
             {
-                Program.DebugLog($"{user.Username} joined {(isWhite ? "white" : "black")} side!");
-                proposal.SetSide(isWhite, user);
-                GameManagerRenderer.DrawProposal(proposal, channel);
+                Program.DebugLog($"{e.Author.Username} joined {(e.IsWhite ? "white" : "black")} side!");
+                proposal.SetSide(e.IsWhite, e.Author);
+                GameManagerRenderer.DrawProposal(proposal);
             }
 
             if (proposal.BothSidesNotNull())
             {
                 Program.DebugLog($"new game created!");
-                var game = new Game(channel, proposal!.WhiteSide, proposal!.BlackSide);
+                var game = new Game(proposal);
                 game.SetupAndRender();
-                _games.Add(channel.Id, game);
-                _proposals.Remove(channel.Id);
+                _games.Add(e.PostedChannel.Id, game);
+                _proposals.Remove(e.PostedChannel.Id);
             }
 
         }

@@ -6,14 +6,48 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5c0f2e7-f6c5-4c60-bd81-b63bdcd9bb9a" name="Default Changelist" comment="" />
+    <list default="true" id="f5c0f2e7-f6c5-4c60-bd81-b63bdcd9bb9a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/chess_proj/Discord/GameProposal.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chess_proj/Discord/Parsing/Events.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chess_proj/Discord/Rendering/EmbededDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.chext/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.chext/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.chext/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.chext/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chess_proj/Discord/GameManagerRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/chess_proj/Discord/Rendering/GameManagerRenderer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chess_proj/Discord/GamesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/chess_proj/Discord/GamesManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chess_proj/Discord/Parsing/PreGameParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/chess_proj/Discord/Parsing/PreGameParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/chess_proj/Discord/Rendering/Renderer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chess_proj/Mechanics/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/chess_proj/Mechanics/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chess_proj/Private/token.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chess_proj/Private/token.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/07748561-2722-4130-9BBF-B50D837F391E/bb/ec6f908f/RestUserMessage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9CD23B5E-3B0C-4F80-A807-33BCFD1D82E1/13E/ThreadPool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/ad/1fb52086/RequestOptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9CD23B5E-3B0C-4F80-A807-33BCFD1D82E1/1E0/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -33,7 +67,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/chess_proj/Private/key.txt" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Player.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Horse.cs" />
@@ -54,7 +87,6 @@
         <option value="$PROJECT_DIR$/chess_proj/Math/Int2.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Castle.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Common.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Piece.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Rook.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Systems/Pieces/Bishop.cs" />
@@ -72,13 +104,20 @@
         <option value="$PROJECT_DIR$/chess_proj/Discord/Parsing/InGameToken.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Player.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Discord/Parsing/InGameParser.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Game.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Discord/Parsing/PreGameToken.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Program.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Mechanics/Board.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/GameManagerRenderer.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Renderer.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Rendering/EmbededRendererCache.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/GameProposal.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Parsing/Events.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Discord/GamesManager.cs" />
         <option value="$PROJECT_DIR$/chess_proj/Discord/Parsing/PreGameParser.cs" />
-        <option value="$PROJECT_DIR$/chess_proj/Discord/GameManagerRenderer.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Mechanics/Game.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Rendering/EmbededDrawer.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Rendering/Renderer.cs" />
+        <option value="$PROJECT_DIR$/chess_proj/Discord/Rendering/GameManagerRenderer.cs" />
       </list>
     </option>
   </component>
@@ -122,15 +161,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610067475425</updated>
-      <workItem from="1610067480524" duration="81346000" />
+      <workItem from="1610067480524" duration="81947000" />
+      <workItem from="1610583522621" duration="5467000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -139,22 +190,22 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state width="789" height="464" key="DebuggerActiveHint/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610326425029" />
-    <state width="2455" height="413" key="GridCell.Tab.0.bottom" timestamp="1610328480769">
+    <state width="2455" height="477" key="GridCell.Tab.0.bottom" timestamp="1610611303335">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.bottom/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610328480769" />
-    <state width="2455" height="413" key="GridCell.Tab.0.center" timestamp="1610328480769">
+    <state width="2455" height="477" key="GridCell.Tab.0.bottom/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610611303335" />
+    <state width="2455" height="477" key="GridCell.Tab.0.center" timestamp="1610611303334">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.center/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610328480769" />
-    <state width="2455" height="413" key="GridCell.Tab.0.left" timestamp="1610328480769">
+    <state width="2455" height="477" key="GridCell.Tab.0.center/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610611303334" />
+    <state width="2455" height="477" key="GridCell.Tab.0.left" timestamp="1610611303334">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.left/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610328480769" />
-    <state width="2455" height="413" key="GridCell.Tab.0.right" timestamp="1610328480769">
+    <state width="2455" height="477" key="GridCell.Tab.0.left/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610611303334" />
+    <state width="2455" height="477" key="GridCell.Tab.0.right" timestamp="1610611303335">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="2455" height="413" key="GridCell.Tab.0.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610328480769" />
+    <state width="2455" height="477" key="GridCell.Tab.0.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610611303335" />
     <state width="2455" height="535" key="GridCell.Tab.1.bottom" timestamp="1610326463248">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
@@ -219,10 +270,10 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state width="2455" height="535" key="GridCell.Tab.4.right/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610326463248" />
-    <state x="1126" y="436" key="RiderGenerateDialog" timestamp="1610227383475">
+    <state x="1126" y="436" key="RiderGenerateDialog" timestamp="1610606953532">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state x="1126" y="436" key="RiderGenerateDialog/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610227383475" />
+    <state x="1126" y="436" key="RiderGenerateDialog/62.0.2498.1440/-1680.256.1680.1050/2560.376.1680.1050@62.0.2498.1440" timestamp="1610606953532" />
     <state x="989" y="453" width="644" height="592" key="find.popup" timestamp="1610327033557">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
@@ -238,14 +289,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/chess_proj/Mechanics/Pieces/Rook.cs</url>
           <line>21</line>
-          <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Systems\Pieces\Castle.cs" initialLine="21">
-            <startOffsets>
-              <option value="585" />
-            </startOffsets>
-            <endOffsets>
-              <option value="611" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Systems\Pieces\Castle.cs" initialLine="21" />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
@@ -263,26 +307,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/chess_proj/Discord/GamesManager.cs</url>
-          <line>108</line>
+          <line>86</line>
           <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Discord\GamesManager.cs" initialLine="88">
             <startOffsets>
-              <option value="3542" />
+              <option value="2768" />
             </startOffsets>
             <endOffsets>
-              <option value="3574" />
+              <option value="2808" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/chess_proj/Discord/GamesManager.cs</url>
-          <line>149</line>
+          <line>127</line>
           <properties documentPath="D:\MOVE\Homework\Concordia_Year_03\Hobby\textual chess\chext\chext\chess_proj\Discord\GamesManager.cs" initialLine="127">
             <startOffsets>
-              <option value="5132" />
+              <option value="4333" />
             </startOffsets>
             <endOffsets>
-              <option value="5170" />
+              <option value="4371" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="22" />

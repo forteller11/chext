@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
+using Discord;
 using Discord.WebSocket;
 
 namespace chext.Discord.Parsing
 {
+    
     public class PreGameParser
     {
         /// <summary> channel created on, creator</summary>
         public event Action<ISocketMessageChannel, SocketUser> GameProposalHandler; 
-        public event Action<SocketUser, ISocketMessageChannel> JoinHandler; 
+        public event Action<JoinEvent> JoinHandler; 
         /// <summary> user, channel, isWhite  </summary>
-        public event Action<SocketUser, ISocketMessageChannel, bool> JoinSideHandler; 
+        public event Action<JoinSideEvent> JoinSideHandler; 
         
         private List<PreGameToken> _tokens = new List<PreGameToken>(20);
         
@@ -40,7 +43,7 @@ namespace chext.Discord.Parsing
             if (_tokens.Count == 1)
             {
                 if (_tokens[0].Type == PreGameToken.TokenType.Join)
-                    JoinHandler?.Invoke(message.Author, message.Channel);
+                    JoinHandler?.Invoke(new JoinEvent(message.Author, message.Channel));
             }
 
             if (_tokens.Count == 2)
@@ -50,8 +53,10 @@ namespace chext.Discord.Parsing
                     GameProposalHandler?.Invoke(message.Channel, message.Author);
 
                 if (_tokens[0].Type == PreGameToken.TokenType.Join && _tokens[1].Type == PreGameToken.TokenType.Side)
-                    JoinSideHandler?.Invoke(message.Author, message.Channel, _tokens[1].Value == "white");
-                
+                {
+                    JoinSideHandler?.Invoke(new JoinSideEvent(message.Author, message.Channel, _tokens[1].Value == "white"));
+                }
+
             }
             #endregion
         }
