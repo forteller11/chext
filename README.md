@@ -4,11 +4,12 @@
  - [x] fix coordinates not corresponding to ui labels
  - [x] add moves for all pieces
  - [x] allow moving of pieces sauf pawns
- - [ ] pawn movement
+ - [x] pawn movement
  - [ ] input queue after render done
- - [ ] pieces don't have references to players
- - [ ] players can join games
- - [ ] create turn structure
+ - [x] pieces don't have references to players
+ - [x] players can join games
+ - [x] create turn structure
+ - [x] supports arbitary number of created games and game proposals
  - [ ] create history
  - [ ] control chat with active game
  - [ ] create timer
