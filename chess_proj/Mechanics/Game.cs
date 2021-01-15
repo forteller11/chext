@@ -40,7 +40,7 @@ namespace chext.Mechanics
 
         public void SetupAndRender()
         {
-            SetupStandard(_board);
+            _board.SetupPiecesStandard();
             _renderer.DrawBoard(_board, GetEnfrachaisedPlayer());
         }
         
@@ -52,40 +52,9 @@ namespace chext.Mechanics
             _inGameParser.Parse(message, _board.Dimensions);
         }
 
-        public void SetupStandard(Board board) //todo should be boards care
-        {
-            //SetupPawnRow(1, White);
-            //SetupPawnRow(6, Black);
-            SetupRowNonPawns(0, true);
-            SetupRowNonPawns(7, false);
-            
-            board.SetCell(4, 4, new Rook(false));
-            
-            void SetupPawnRow(int rowIndex, bool isWhite)
-            {
-                for (int i = 0; i < _board.Dimensions; i++)
-                    board.SetCell(rowIndex, i, new Pawn(isWhite));
-            }
-            
-            void SetupRowNonPawns(int rowIndex, bool isWhite)
-            {
-                board.SetCell(rowIndex, 0, new Rook(isWhite));
-                board.SetCell(rowIndex, 7, new Rook(isWhite));
-                board.SetCell(rowIndex, 1, new Knight(isWhite));
-                board.SetCell(rowIndex, 6, new Knight(isWhite));
-                board.SetCell(rowIndex, 2, new Bishop(isWhite));
-                board.SetCell(rowIndex, 5, new Bishop(isWhite));
-                int queenIndex = isWhite ? 4 : 3;
-                int kingIndex  = isWhite ? 3 : 4;
-                board.SetCell(rowIndex, queenIndex, new King(isWhite));
-                board.SetCell(rowIndex, kingIndex, new Queen(isWhite));
-    
-            }
-        }
-        
-        
         private void OnDisplayMoves(Int2 position)
         {
+            Program.DebugLog("On display moves");
             _renderer.DisplayMoves(_board, position);
             _renderer.DrawBoard(_board, GetEnfrachaisedPlayer());
         }

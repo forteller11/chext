@@ -7,17 +7,17 @@ namespace chext.Mechanics.Pieces
     {
         public Queen(bool isWhite) : base(isWhite, 'q') { }
 
-        public override void RefreshValidMoves(Int2 piecePosition, Piece[][] cells, List<Move> moves)
+        public override void RefreshValidMoves(Board board, Int2 pos, List<Move> moves)
         {
-            SearchStraight(cells, moves, piecePosition,new Int2(0,1));
-            SearchStraight(cells, moves, piecePosition,new Int2(0,-1));
-            SearchStraight(cells, moves, piecePosition,new Int2(1,0));
-            SearchStraight(cells, moves, piecePosition,new Int2(-1,0));
+            SearchStraight(board, moves, pos,new Int2(0,1));
+            SearchStraight(board, moves, pos,new Int2(0,-1));
+            SearchStraight(board, moves, pos,new Int2(1,0));
+            SearchStraight(board, moves, pos,new Int2(-1,0));
             
-            SearchStraight(cells, moves, piecePosition,new Int2(1,1));
-            SearchStraight(cells, moves, piecePosition,new Int2(-1,-1));
-            SearchStraight(cells, moves, piecePosition,new Int2(-1,1));
-            SearchStraight(cells, moves, piecePosition,new Int2(1,-1));
+            SearchStraight(board, moves, pos,new Int2(1,1));
+            SearchStraight(board, moves, pos,new Int2(-1,-1));
+            SearchStraight(board, moves, pos,new Int2(-1,1));
+            SearchStraight(board, moves, pos,new Int2(1,-1));
         }
     }
 }

@@ -7,17 +7,17 @@ namespace chext.Mechanics.Pieces
     {
         public King(bool isWhite) : base(isWhite, 'k') { }
 
-        public override void RefreshValidMoves(Int2 piecePosition, Piece[][] cells, List<Move> moves)
+        public override void RefreshValidMoves(Board board, Int2 pos, List<Move> moves)
         {
-            AddMoveIfValid(cells, moves, piecePosition + new Int2(0, 1), piecePosition);
-            AddMoveIfValid(cells, moves, piecePosition + new Int2(1, 0), piecePosition);
-            AddMoveIfValid(cells, moves, piecePosition + new Int2(0, -1), piecePosition);
-            AddMoveIfValid(cells, moves, piecePosition + new Int2(-1, 0), piecePosition);
+            AddMoveIfValid(board, moves, pos + new Int2(0, 1), pos);
+            AddMoveIfValid(board, moves, pos + new Int2(1, 0), pos);
+            AddMoveIfValid(board, moves, pos + new Int2(0, -1), pos);
+            AddMoveIfValid(board, moves, pos + new Int2(-1, 0), pos);
             
-            AddMoveIfValid(cells, moves, piecePosition + new Int2(1, 1), piecePosition);
-            AddMoveIfValid(cells, moves, piecePosition + new Int2(-1, -1), piecePosition);
-            AddMoveIfValid(cells, moves, piecePosition + new Int2(1, -1), piecePosition);
-            AddMoveIfValid(cells, moves, piecePosition + new Int2(-1, 1), piecePosition);
+            AddMoveIfValid(board, moves, pos + new Int2(1, 1), pos);
+            AddMoveIfValid(board, moves, pos + new Int2(-1, -1), pos);
+            AddMoveIfValid(board, moves, pos + new Int2(1, -1), pos);
+            AddMoveIfValid(board, moves, pos + new Int2(-1, 1), pos);
             
    
         }

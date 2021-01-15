@@ -20,25 +20,18 @@ namespace chext.Mechanics.Pieces
             IsWhite = isWhite;
             Type = type.ToString();
         }
-        public abstract void RefreshValidMoves(Int2 piecePosition, Piece?[][] cells, List<Move> moves);
+        public abstract void RefreshValidMoves(Board board, Int2 pos, List<Move> moves);
+        public virtual void OnPostMove(){}
 
-        protected bool IsWithinBounds(Int2 position, Piece?[][] cells) => IsWithinBounds(position.X, position.Y, cells);
-        protected bool IsWithinBounds(int x, int y, Piece?[][] cells)
-        {
-            if (x >= cells.Length) return false;
-            if (x <  0)            return false;
-            if (y >= cells[x].Length) return false;
-            if (y < 0)                return false;
-            return true;
-        }
-        
-        protected void SearchStraight(Piece?[][] cells, List<Move> moves, Int2 initalPosition, Int2 increment)
+        protected void SearchStraight(Board board, List<Move> moves, Int2 initalPosition, Int2 increment)
         {
             Int2 index = initalPosition;
             while (true)
             {
+                Program.DebugLog(index);
+                Program.DebugLog(increment);
                 index += increment;
-                if (!AddMoveIfValid(cells, moves, index, index - increment))
+                if (!AddMoveIfValid(board, moves, index, index - increment))
                     break;
             }
         }
@@ -49,12 +42,12 @@ namespace chext.Mechanics.Pieces
         /// <returns>
         /// has hit piece or is out of bounds == false, if hit empty square == true
         /// </returns>
-        protected bool AddMoveIfValid(Piece?[][] cells, List<Move> moves, Int2 target, Int2 initialPosition)
+        protected bool AddMoveIfValid(Board board, List<Move> moves, Int2 target, Int2 initialPosition)
         {
-            if (!IsWithinBounds(target, cells))
+            if (!board.IsWithinBounds(target))
                 return false;
 
-            var cell = cells[target.X][target.Y];
+            var cell = board.GetCell(target);
             if (cell != null)
             {
                 if (IsWhite != cell.IsWhite) //if piece on other side

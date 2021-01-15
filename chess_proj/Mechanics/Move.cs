@@ -8,7 +8,7 @@ namespace chext.Mechanics
         public Int2 Pos;
         public Int2 From;
         public bool ValidLanding;
-        
+
         public Move(Int2 pos, Int2 from, bool validLanding=true)
         {
             Pos = pos;
