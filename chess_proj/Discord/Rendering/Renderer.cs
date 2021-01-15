@@ -34,13 +34,13 @@ namespace chext.Discord
         public void DisplayMoves(Board board, Int2 position)
         {
             ClearEffects(board);
-            Effects[position.X][position.Y] = 'X';
+            Effects[position.X][position.Y] = '0';
             
             var moves = board.GetMoves(position);
             for (int i = 0; i < moves.Count; i++)
             {
                 var p = moves[i].Pos;
-                Effects[p.X][p.Y] = '.';
+                Effects[p.X][p.Y] = 'x';
             }
 
             Program.DebugLog("Display moves end");
@@ -80,14 +80,21 @@ namespace chext.Discord
                 
                 for (int j = 0; j < board.Dimensions; j++)
                 {
-                    if (Effects[i][j] != '\0')
-                    {
-                        _stringBuilder.Append($"| {Effects[i][j]} ");
-                    }
-                    else if (board.GetCell(i, j) == null)
-                        _stringBuilder.Append("|   ");
+                    var cell = board.GetCell(i, j);
+                    
+                    var effect = Effects[i][j];
+                    char right = effect == '\0' ? ' ' : effect;
+                    
+                    if (cell == null)
+                        _stringBuilder.Append("|  " + right);
                     else
-                        _stringBuilder.Append("|" + board.Cells[i][j]!.Name);
+                    {
+
+                        char left  = cell.IsWhite ? ' ' : '`';
+                        char middle = board.Cells[i][j].Type;
+
+                        _stringBuilder.Append("|" + left + middle + right);
+                    }
                 }
                 _stringBuilder.Append("|");
                 _stringBuilder.Append((rowLabel).ToString().PadLeft(BOARD_BORDER_WIDTH-2, ' ') + " ");
@@ -124,6 +131,8 @@ namespace chext.Discord
             #endregion
 
             Drawer.Builder.Title = $"{Turn()}'s ({enfrachaisedPlayer.Username}) turn.";
+            
+            ClearEffects(board);
             
             await Drawer.Draw();
 

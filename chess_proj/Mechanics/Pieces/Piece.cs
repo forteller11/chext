@@ -8,8 +8,8 @@ namespace chext.Mechanics.Pieces
 {
     public abstract class Piece
     {
-        public string Name => IsWhite ? $" {Type.ToUpper()} " : $"`{Type.ToLower()} ";  //wasting mem
-        public readonly string Type; //wasting mem
+        public string Name => IsWhite ? $" {char.ToLower(Type)} " : $"`{char.ToLower(Type)} ";  //wasting mem
+        public readonly char Type; //wasting mem
         public readonly bool IsWhite;
         
         //public string EmoteName => "\\:__" + Name + "__:";
@@ -18,7 +18,7 @@ namespace chext.Mechanics.Pieces
        public Piece(bool isWhite, char type)
         {
             IsWhite = isWhite;
-            Type = type.ToString();
+            Type = type;
         }
         public abstract void RefreshValidMoves(Board board, Int2 pos, List<Move> moves);
         public virtual void OnPostMove(){}
