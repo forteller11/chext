@@ -23,13 +23,12 @@ namespace chext.Mechanics.Pieces
         public abstract void RefreshValidMoves(Board board, Int2 pos, List<Move> moves);
         public virtual void OnPostMove(){}
 
-        protected void SearchStraight(Board board, List<Move> moves, Int2 initalPosition, Int2 increment)
+        protected void SearchStraight(Board board, List<Move> moves, Int2 initalPosition, Int2 increment, int maxSearches=Int32.MaxValue)
         {
             Int2 index = initalPosition;
-            while (true)
+            while (maxSearches > 0)
             {
-                Program.DebugLog(index);
-                Program.DebugLog(increment);
+                maxSearches --;
                 index += increment;
                 if (!AddMoveIfValid(board, moves, index, index - increment))
                     break;
