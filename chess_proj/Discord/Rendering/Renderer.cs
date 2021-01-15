@@ -1,12 +1,8 @@
-﻿using System;
-using System.IO;
-using System.Text;
+﻿using System.Text;
 using System.Threading.Tasks;
 using chext.Math;
 using chext.Mechanics;
 using Discord;
-using Discord.Rest;
-using Discord.WebSocket;
 
 #nullable enable
 namespace chext.Discord
@@ -14,7 +10,6 @@ namespace chext.Discord
     public class Renderer
     {
         private EmbededDrawer Drawer;
-        public Board _board;
         public char[][] Effects; //over top chess board for visual effects
 
         private StringBuilder _stringBuilder;
@@ -24,25 +19,24 @@ namespace chext.Discord
 
         public Renderer(Board board, EmbededDrawer drawer)
         {
-            _board = board;
             Drawer = drawer;
             
-            Effects = new char[_board.Dimensions][];
-            ClearEffects();
+            Effects = new char[board.Dimensions][];
+            ClearEffects(board);
             
-            _stringBuilder = new StringBuilder(_board.Dimensions * _board.Dimensions * 6);
+            _stringBuilder = new StringBuilder(board.Dimensions * board.Dimensions * 6);
             _stringBuilder.Append('#', _stringBuilder.Capacity);
             
             Drawer.Builder.Color = Color.Gold;
             Drawer.Builder.Title = "Chext";
         }
 
-        public void DisplayMoves(Int2 position)
+        public void DisplayMoves(Board board, Int2 position)
         {
-            ClearEffects();
+            ClearEffects(board);
             Effects[position.X][position.Y] = 'X';
             
-            var moves = _board.GetMoves(position);
+            var moves = board.GetMoves(position);
             for (int i = 0; i < moves.Count; i++)
             {
                 var p = moves[i].Pos;
@@ -52,48 +46,48 @@ namespace chext.Discord
             Program.DebugLog("Display moves end");
         }
 
-        public void ClearEffects()
+        public void ClearEffects(Board board)
         {
-            for (int i = 0; i < _board.Dimensions; i++)
+            for (int i = 0; i < board.Dimensions; i++)
             {
-                Effects[i] = new char[_board.Dimensions];
-                for (int j = 0; j < _board.Dimensions; j++)
+                Effects[i] = new char[board.Dimensions];
+                for (int j = 0; j < board.Dimensions; j++)
                     Effects[i][j] = '\0';
             }
         }
-        public async Task DrawBoard()
+        public async Task DrawBoard(Board board, Player enfrachaisedPlayer)
         {
             Program.DebugLog("Redraw");
             
+            #region board
             _stringBuilder.Clear();
             _stringBuilder.Append("```"); //code block start
 
-            
             LetterRow();
             _stringBuilder.Append("\n");
             
             _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
-            _stringBuilder.Append(new string('-', _board.Dimensions*CELL_WIDTH+1));
+            _stringBuilder.Append(new string('-', board.Dimensions*CELL_WIDTH+1));
             _stringBuilder.Append("\n");
             
             
-            for (int i = 0; i < _board.Dimensions; i++)
+            for (int i = 0; i < board.Dimensions; i++)
             {
                 #region piece row
                 
-                int rowLabel = _board.Dimensions - i;
+                int rowLabel = board.Dimensions - i;
                 _stringBuilder.Append("  " + (rowLabel).ToString().PadRight(BOARD_BORDER_WIDTH-2, ' '));
                 
-                for (int j = 0; j < _board.Dimensions; j++)
+                for (int j = 0; j < board.Dimensions; j++)
                 {
                     if (Effects[i][j] != '\0')
                     {
                         _stringBuilder.Append($"| {Effects[i][j]} ");
                     }
-                    else if (_board.GetCell(i, j) == null)
+                    else if (board.GetCell(i, j) == null)
                         _stringBuilder.Append("|   ");
                     else
-                        _stringBuilder.Append("|" + _board.Cells[i][j]!.Name);
+                        _stringBuilder.Append("|" + board.Cells[i][j]!.Name);
                 }
                 _stringBuilder.Append("|");
                 _stringBuilder.Append((rowLabel).ToString().PadLeft(BOARD_BORDER_WIDTH-2, ' ') + " ");
@@ -101,11 +95,11 @@ namespace chext.Discord
 
                 #region spacer row
                 _stringBuilder.Append(" \n");
-                if (i != _board.Dimensions - 1)
+                if (i != board.Dimensions - 1)
                 {
                     _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
                     
-                    for (int j = 0; j < _board.Dimensions; j++)
+                    for (int j = 0; j < board.Dimensions; j++)
                         _stringBuilder.Append("|---");
                     
                     _stringBuilder.Append("|");
@@ -115,7 +109,7 @@ namespace chext.Discord
                 else //bottom row
                 {
                     _stringBuilder.Append(new string(' ', BOARD_BORDER_WIDTH));
-                    _stringBuilder.Append(new string('-', _board.Dimensions*CELL_WIDTH+1));
+                    _stringBuilder.Append(new string('-', board.Dimensions*CELL_WIDTH+1));
                 }
                 #endregion
             }
@@ -127,17 +121,24 @@ namespace chext.Discord
             _stringBuilder.Append("```"); //code block end
             
             Drawer.Builder.Description = _stringBuilder.ToString();
+            #endregion
+
+            Drawer.Builder.Title = $"{Turn()}'s ({enfrachaisedPlayer.Username}) turn.";
             
             await Drawer.Draw();
 
+            #region nested functions
             void LetterRow()
             {
                 _stringBuilder.Append(' ', BOARD_BORDER_WIDTH);
-                for (int i = 0; i < _board.Dimensions; i++)
+                for (int i = 0; i < board.Dimensions; i++)
                 {
                     _stringBuilder.Append($"  {Common.IndexToLetter(i)} ");
                 }
             }
+            
+            string Turn () => board.IsWhitesTurn ? "White" : "Black";
+            #endregion
         }
         
  

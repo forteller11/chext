@@ -41,17 +41,17 @@ namespace chext.Mechanics
         
         public void MovePiece(Player actor, Int2 from, Int2 target)
         {
+  
             if (actor.IsWhite != IsWhitesTurn)
             {
                 Program.WarningLog($"Is not {actor.Username}'s turn to move!");
                 return;
             }
-            
-            var piece = GetCell(from);
 
+            var piece = GetCell(from);
             if (piece == null)
             {
-                Program.WarningLog($"no piece at {from}");
+                Program.WarningLog($"no piece exists at {Common.IndexToLabelCoordinate(from, Dimensions)}");
                 return;
             }
             
@@ -62,6 +62,7 @@ namespace chext.Mechanics
                 return;
             }
 
+            
             //is target in list of valid moves
             _validMoves.Clear();
             piece.RefreshValidMoves(from, Cells, _validMoves);
@@ -95,6 +96,9 @@ namespace chext.Mechanics
             //move piece
             Cells[from.X][from.Y] = null;
             Cells[target.X][target.Y] = piece;
+            
+            //next turn
+           IsWhitesTurn = !IsWhitesTurn;
         }
 
         public Piece? GetCell(Int2 position) => Cells[position.X][position.Y];

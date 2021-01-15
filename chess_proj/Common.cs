@@ -62,7 +62,7 @@ namespace chext
             return new Int2(x,y);
         }
         
-        public static string ToLabelCoordinate(Int2 pos, int boardDimensions)
+        public static string IndexToLabelCoordinate(Int2 pos, int boardDimensions)
         {
             var x = Common.IndexToLetter(pos.X);
             var y   = boardDimensions - pos.Y; 

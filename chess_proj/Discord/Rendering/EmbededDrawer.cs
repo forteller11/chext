@@ -25,15 +25,18 @@ namespace chext.Discord
         {
             if (_hasDrawnBefore)
             {
+                Program.DebugLog("draw modify start");
                 await _messageTask; //makes sure you have the result of the user message returned from the first draw
                 await _messageTask.Result.ModifyAsync(properties => { properties.Embed = Builder.Build(); });
             }
             else
             {
+                Program.DebugLog("draw create start");
                 _messageTask = Channel.SendMessageAsync(null, false, Builder.Build());
                 _hasDrawnBefore = true;
                 await _messageTask;
             }
+            Program.DebugLog("draw done");
         }
     }
 }

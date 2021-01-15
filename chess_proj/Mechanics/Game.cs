@@ -41,7 +41,7 @@ namespace chext.Mechanics
         public void SetupAndRender()
         {
             SetupStandard(_board);
-            _renderer.DrawBoard();
+            _renderer.DrawBoard(_board, GetEnfrachaisedPlayer());
         }
         
         
@@ -86,8 +86,8 @@ namespace chext.Mechanics
         
         private void OnDisplayMoves(Int2 position)
         {
-            _renderer.DisplayMoves(position);
-            _renderer.DrawBoard();
+            _renderer.DisplayMoves(_board, position);
+            _renderer.DrawBoard(_board, GetEnfrachaisedPlayer());
         }
         
         private void OnMove(Int2 from, Int2 to, SocketUser author)
@@ -99,12 +99,10 @@ namespace chext.Mechanics
             }
             else 
             {
-                Program.WarningLog($"{author.Username} is trying to move {Common.ToLabelCoordinate(from, _board.Dimensions)} but cannot as they are not the in-turn player in current game!");
+                Program.WarningLog($"{author.Username} is trying to move {Common.IndexToLabelCoordinate(from, _board.Dimensions)} but cannot as they are not the in-turn player in current game!");
             }
 
-            _board.IsWhitesTurn = !_board.IsWhitesTurn;
-            
-            _renderer.DrawBoard();
+            _renderer.DrawBoard(_board, GetEnfrachaisedPlayer());
             
         }
         
@@ -132,5 +130,8 @@ namespace chext.Mechanics
             player = null;
             return false;
         }
+
+        Player GetEnfrachaisedPlayer() => _board.IsWhitesTurn ? White : Black;
+        
     }
 }
