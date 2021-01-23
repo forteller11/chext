@@ -10,11 +10,14 @@
  - [x] players can join games
  - [x] create turn structure
  - [x] supports arbitary number of created games and game proposals
- - [ ] create history
- - [ ] control chat with active game
- - [ ] create timer
- - [ ] move shorthands with implications (to a3) --> moves X to a3 if not ambigious
- - [ ] draw recognizer (if repeat same move too many times etc.)
- - [ ] check recognizer (can only move to uncheck)
- - [ ] checkmate recognizer
+ - [ ] record history of moves
+ - [ ] add undo/redo functionality
+ - [ ] control chat within channel of active game so board never scrolls off screen
+ - [ ] add timer
+ - [ ] allow input to be in the form of traditional chess "Algebraic Notation", disamiguating moves when possible else giving warning messages
+ - [ ] add ability to ability to move with traditional chess notation [be3]
+ - [ ] add a draw recognizer (if repeat same move too many times etc.)
+ - [ ] add check recognizer (can only move to uncheck)
+ - [ ] add castling
+ - [ ] add checkmate recognizer
 
